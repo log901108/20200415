@@ -1,0 +1,41 @@
+{
+	"development": {
+    "username": "adm",
+    "password": "hjy1234",
+    "database": "appdb",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+	"dialectOptions": {
+        "useUTC": false
+    },
+	"timezone": "+09:00",
+	"pool": { "max": 5, "min": 0, "idle": 10000 }
+   
+  },
+  "test": {
+    "username": "adm",
+    "password": "hjy1234",
+    "database": "appdb",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+	"dialectOptions": {
+        "useUTC": false
+    },
+	"timezone": "+09:00",
+	"pool": { "max": 5, "min": 0, "idle": 10000 }
+   
+  },
+  "production": {
+    "username": "adm",
+    "password": "hjy1234",
+    "database": "appdb",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+	"dialectOptions": {
+        "useUTC": false
+    },
+	"timezone": "+09:00",
+	"pool": { "max": 5, "min": 0, "idle": 10000 }
+    
+  }
+}
