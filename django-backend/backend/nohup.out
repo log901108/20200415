@@ -1,0 +1,66 @@
+[2020-04-19 08:16:17 +0000] [8033] [INFO] Starting gunicorn 20.0.4
+[2020-04-19 08:16:17 +0000] [8033] [INFO] Listening at: http://0.0.0.0:80 (8033)
+[2020-04-19 08:16:17 +0000] [8033] [INFO] Using worker: sync
+[2020-04-19 08:16:17 +0000] [8053] [INFO] Booting worker with pid: 8053
+[2020-04-19 08:16:17 +0000] [8054] [INFO] Booting worker with pid: 8054
+[2020-04-19 08:16:17 +0000] [8053] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/workspace/20200415/django-backend/env/lib/python3.6/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/workspace/20200415/django-backend/env/lib/python3.6/site-packages/gunicorn/workers/base.py", line 119, in init_process
+    self.load_wsgi()
+  File "/workspace/20200415/django-backend/env/lib/python3.6/site-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/workspace/20200415/django-backend/env/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/workspace/20200415/django-backend/env/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 49, in load
+    return self.load_wsgiapp()
+  File "/workspace/20200415/django-backend/env/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/workspace/20200415/django-backend/env/lib/python3.6/site-packages/gunicorn/util.py", line 358, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 941, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 953, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'backend'
+[2020-04-19 08:16:17 +0000] [8053] [INFO] Worker exiting (pid: 8053)
+[2020-04-19 08:16:17 +0000] [8054] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/workspace/20200415/django-backend/env/lib/python3.6/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/workspace/20200415/django-backend/env/lib/python3.6/site-packages/gunicorn/workers/base.py", line 119, in init_process
+    self.load_wsgi()
+  File "/workspace/20200415/django-backend/env/lib/python3.6/site-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/workspace/20200415/django-backend/env/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/workspace/20200415/django-backend/env/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 49, in load
+    return self.load_wsgiapp()
+  File "/workspace/20200415/django-backend/env/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/workspace/20200415/django-backend/env/lib/python3.6/site-packages/gunicorn/util.py", line 358, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 941, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 953, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'backend'
+[2020-04-19 08:16:17 +0000] [8054] [INFO] Worker exiting (pid: 8054)
+[2020-04-19 08:16:17 +0000] [8033] [INFO] Shutting down: Master
+[2020-04-19 08:16:17 +0000] [8033] [INFO] Reason: Worker failed to boot.
+[2020-04-19 08:23:26 +0000] [10297] [INFO] Starting gunicorn 20.0.4
+[2020-04-19 08:23:26 +0000] [10297] [INFO] Listening at: http://0.0.0.0:80 (10297)
+[2020-04-19 08:23:26 +0000] [10297] [INFO] Using worker: sync
+[2020-04-19 08:23:26 +0000] [10330] [INFO] Booting worker with pid: 10330
+[2020-04-19 08:23:26 +0000] [10331] [INFO] Booting worker with pid: 10331
