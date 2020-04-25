@@ -1,0 +1,174 @@
+[2020-04-25 06:07:43 +0000] [2572] [INFO] Starting gunicorn 20.0.4
+[2020-04-25 06:07:43 +0000] [2572] [INFO] Listening at: http://0.0.0.0:80 (2572)
+[2020-04-25 06:07:43 +0000] [2572] [INFO] Using worker: sync
+[2020-04-25 06:07:43 +0000] [2593] [INFO] Booting worker with pid: 2593
+[2020-04-25 06:07:44 +0000] [2594] [INFO] Booting worker with pid: 2594
+[2020-04-25 06:07:45 +0000] [2594] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/workspace/20200415/django-back/env/lib/python3.6/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/workspace/20200415/django-back/env/lib/python3.6/site-packages/gunicorn/workers/base.py", line 119, in init_process
+    self.load_wsgi()
+  File "/workspace/20200415/django-back/env/lib/python3.6/site-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/workspace/20200415/django-back/env/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/workspace/20200415/django-back/env/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 49, in load
+    return self.load_wsgiapp()
+  File "/workspace/20200415/django-back/env/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/workspace/20200415/django-back/env/lib/python3.6/site-packages/gunicorn/util.py", line 358, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/workspace/20200415/django-back/apiserver/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/workspace/20200415/django-back/env/lib/python3.6/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/workspace/20200415/django-back/env/lib/python3.6/site-packages/django/__init__.py", line 19, in setup
+    configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+  File "/workspace/20200415/django-back/env/lib/python3.6/site-packages/django/conf/__init__.py", line 76, in __getattr__
+    self._setup(name)
+  File "/workspace/20200415/django-back/env/lib/python3.6/site-packages/django/conf/__init__.py", line 63, in _setup
+    self._wrapped = Settings(settings_module)
+  File "/workspace/20200415/django-back/env/lib/python3.6/site-packages/django/conf/__init__.py", line 142, in __init__
+    mod = importlib.import_module(self.SETTINGS_MODULE)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/workspace/20200415/django-back/apiserver/settings.py", line 27, in <module>
+    DEBUG = false
+NameError: name 'false' is not defined
+[2020-04-25 06:07:45 +0000] [2594] [INFO] Worker exiting (pid: 2594)
+[2020-04-25 06:07:45 +0000] [2593] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/workspace/20200415/django-back/env/lib/python3.6/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/workspace/20200415/django-back/env/lib/python3.6/site-packages/gunicorn/workers/base.py", line 119, in init_process
+    self.load_wsgi()
+  File "/workspace/20200415/django-back/env/lib/python3.6/site-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/workspace/20200415/django-back/env/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/workspace/20200415/django-back/env/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 49, in load
+    return self.load_wsgiapp()
+  File "/workspace/20200415/django-back/env/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/workspace/20200415/django-back/env/lib/python3.6/site-packages/gunicorn/util.py", line 358, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/workspace/20200415/django-back/apiserver/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/workspace/20200415/django-back/env/lib/python3.6/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/workspace/20200415/django-back/env/lib/python3.6/site-packages/django/__init__.py", line 19, in setup
+    configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+  File "/workspace/20200415/django-back/env/lib/python3.6/site-packages/django/conf/__init__.py", line 76, in __getattr__
+    self._setup(name)
+  File "/workspace/20200415/django-back/env/lib/python3.6/site-packages/django/conf/__init__.py", line 63, in _setup
+    self._wrapped = Settings(settings_module)
+  File "/workspace/20200415/django-back/env/lib/python3.6/site-packages/django/conf/__init__.py", line 142, in __init__
+    mod = importlib.import_module(self.SETTINGS_MODULE)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/workspace/20200415/django-back/apiserver/settings.py", line 27, in <module>
+    DEBUG = false
+NameError: name 'false' is not defined
+[2020-04-25 06:07:45 +0000] [2593] [INFO] Worker exiting (pid: 2593)
+[2020-04-25 06:07:46 +0000] [2572] [INFO] Shutting down: Master
+[2020-04-25 06:07:46 +0000] [2572] [INFO] Reason: Worker failed to boot.
+[2020-04-25 06:24:34 +0000] [3606] [INFO] Starting gunicorn 20.0.4
+[2020-04-25 06:24:34 +0000] [3606] [INFO] Listening at: http://0.0.0.0:80 (3606)
+[2020-04-25 06:24:34 +0000] [3606] [INFO] Using worker: sync
+[2020-04-25 06:24:34 +0000] [3628] [INFO] Booting worker with pid: 3628
+[2020-04-25 06:24:34 +0000] [3629] [INFO] Booting worker with pid: 3629
+[2020-04-25 06:28:07 +0000] [3874] [INFO] Starting gunicorn 20.0.4
+[2020-04-25 06:28:07 +0000] [3874] [ERROR] Connection in use: ('', 80)
+[2020-04-25 06:28:07 +0000] [3874] [ERROR] Retrying in 1 second.
+[2020-04-25 06:28:08 +0000] [3874] [ERROR] Connection in use: ('', 80)
+[2020-04-25 06:28:08 +0000] [3874] [ERROR] Retrying in 1 second.
+[2020-04-25 06:28:09 +0000] [3874] [ERROR] Connection in use: ('', 80)
+[2020-04-25 06:28:09 +0000] [3874] [ERROR] Retrying in 1 second.
+[2020-04-25 06:28:10 +0000] [3874] [ERROR] Connection in use: ('', 80)
+[2020-04-25 06:28:10 +0000] [3874] [ERROR] Retrying in 1 second.
+[2020-04-25 06:28:11 +0000] [3874] [ERROR] Connection in use: ('', 80)
+[2020-04-25 06:28:11 +0000] [3874] [ERROR] Retrying in 1 second.
+[2020-04-25 06:28:12 +0000] [3874] [ERROR] Can't connect to ('', 80)
+[2020-04-25 06:30:11 +0000] [4062] [INFO] Starting gunicorn 20.0.4
+[2020-04-25 06:30:11 +0000] [4062] [ERROR] Connection in use: ('', 80)
+[2020-04-25 06:30:11 +0000] [4062] [ERROR] Retrying in 1 second.
+[2020-04-25 06:30:12 +0000] [4062] [ERROR] Connection in use: ('', 80)
+[2020-04-25 06:30:12 +0000] [4062] [ERROR] Retrying in 1 second.
+[2020-04-25 06:30:13 +0000] [4062] [ERROR] Connection in use: ('', 80)
+[2020-04-25 06:30:13 +0000] [4062] [ERROR] Retrying in 1 second.
+[2020-04-25 06:30:14 +0000] [4062] [ERROR] Connection in use: ('', 80)
+[2020-04-25 06:30:14 +0000] [4062] [ERROR] Retrying in 1 second.
+[2020-04-25 06:30:15 +0000] [4062] [ERROR] Connection in use: ('', 80)
+[2020-04-25 06:30:15 +0000] [4062] [ERROR] Retrying in 1 second.
+[2020-04-25 06:30:16 +0000] [4062] [ERROR] Can't connect to ('', 80)
+[2020-04-25 06:33:11 +0000] [4297] [INFO] Starting gunicorn 20.0.4
+[2020-04-25 06:33:11 +0000] [4297] [ERROR] Connection in use: ('', 80)
+[2020-04-25 06:33:11 +0000] [4297] [ERROR] Retrying in 1 second.
+[2020-04-25 06:33:12 +0000] [4297] [ERROR] Connection in use: ('', 80)
+[2020-04-25 06:33:12 +0000] [4297] [ERROR] Retrying in 1 second.
+[2020-04-25 06:33:13 +0000] [4297] [ERROR] Connection in use: ('', 80)
+[2020-04-25 06:33:13 +0000] [4297] [ERROR] Retrying in 1 second.
+[2020-04-25 06:33:14 +0000] [4297] [ERROR] Connection in use: ('', 80)
+[2020-04-25 06:33:14 +0000] [4297] [ERROR] Retrying in 1 second.
+[2020-04-25 06:33:15 +0000] [4297] [ERROR] Connection in use: ('', 80)
+[2020-04-25 06:33:15 +0000] [4297] [ERROR] Retrying in 1 second.
+[2020-04-25 06:33:16 +0000] [4297] [ERROR] Can't connect to ('', 80)
+[2020-04-25 15:43:11 +0900] [3628] [INFO] Worker exiting (pid: 3628)
+[2020-04-25 06:43:12 +0000] [4935] [INFO] Booting worker with pid: 4935
+[2020-04-25 06:43:25 +0000] [4957] [INFO] Booting worker with pid: 4957
+[2020-04-25 15:43:41 +0900] [4957] [INFO] Parent changed, shutting down: <Worker 4957>
+[2020-04-25 15:43:41 +0900] [4957] [INFO] Worker exiting (pid: 4957)
+[2020-04-25 15:43:43 +0900] [4935] [INFO] Parent changed, shutting down: <Worker 4935>
+[2020-04-25 15:43:43 +0900] [4935] [INFO] Worker exiting (pid: 4935)
+[2020-04-25 06:44:25 +0000] [5041] [INFO] Starting gunicorn 20.0.4
+[2020-04-25 06:44:25 +0000] [5041] [INFO] Listening at: http://0.0.0.0:80 (5041)
+[2020-04-25 06:44:25 +0000] [5041] [INFO] Using worker: sync
+[2020-04-25 06:44:25 +0000] [5066] [INFO] Booting worker with pid: 5066
+[2020-04-25 06:44:25 +0000] [5067] [INFO] Booting worker with pid: 5067
+[2020-04-25 15:58:29 +0900] [5066] [INFO] Parent changed, shutting down: <Worker 5066>
+[2020-04-25 15:58:29 +0900] [5066] [INFO] Worker exiting (pid: 5066)
+[2020-04-25 15:58:30 +0900] [5067] [INFO] Parent changed, shutting down: <Worker 5067>
+[2020-04-25 15:58:30 +0900] [5067] [INFO] Worker exiting (pid: 5067)
+[2020-04-25 06:58:34 +0000] [5900] [INFO] Starting gunicorn 20.0.4
+[2020-04-25 06:58:34 +0000] [5900] [INFO] Listening at: http://0.0.0.0:80 (5900)
+[2020-04-25 06:58:34 +0000] [5900] [INFO] Using worker: sync
+[2020-04-25 06:58:34 +0000] [5926] [INFO] Booting worker with pid: 5926
+[2020-04-25 06:58:34 +0000] [5927] [INFO] Booting worker with pid: 5927
+[2020-04-25 16:12:39 +0900] [5927] [INFO] Parent changed, shutting down: <Worker 5927>
+[2020-04-25 16:12:39 +0900] [5927] [INFO] Worker exiting (pid: 5927)
+[2020-04-25 16:12:39 +0900] [5926] [INFO] Parent changed, shutting down: <Worker 5926>
+[2020-04-25 16:12:39 +0900] [5926] [INFO] Worker exiting (pid: 5926)
+[2020-04-25 07:12:57 +0000] [6943] [INFO] Starting gunicorn 20.0.4
+[2020-04-25 07:12:57 +0000] [6943] [INFO] Listening at: http://0.0.0.0:80 (6943)
+[2020-04-25 07:12:57 +0000] [6943] [INFO] Using worker: sync
+[2020-04-25 07:12:57 +0000] [6975] [INFO] Booting worker with pid: 6975
+[2020-04-25 07:12:57 +0000] [6976] [INFO] Booting worker with pid: 6976

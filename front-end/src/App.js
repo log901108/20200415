@@ -9,9 +9,19 @@ class App extends Component {
         try {
             const res = await fetch('https://djangoapp.run.goorm.io/api/');
             const posts = await res.json();
-            this.setState({
-                posts
-            });
+			console.log(posts);
+			if(typeof posts == Array){
+				this.setState({
+                	posts
+            	});
+			}else{
+				this.setState({
+					posts:[{"id":"0","title": "detail", "content":posts.detail}]
+				})
+			}
+				
+			
+
         } catch (e) {
             console.log(e);
         }

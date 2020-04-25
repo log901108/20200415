@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    'post', #api
+    'post.apps.PostConfig', #api
     'core.apps.CoreConfig', #JWT
     'rest_framework', #drf module
     'corsheaders', #cors module
@@ -61,6 +61,8 @@ JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7), #SETTING ACCESS TOKEN EXPIRY TIME SETTING
     'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=28), #SETTING REFRESH TOKEN EXPIRY TIME SETTING
     'JWT_RESPONSE_PAYLOAD_HANDLER':'apiserver.utils.my_jwt_response_handler', #CUSTOM RESPONSE HANDLER SETTING
+    'JWT_PAYLOAD_HANDLER': 'apiserver.utils.my_jwt_payload_handler', #CUSTOM JWT PAYLOAD HANDLER SETTING
+
 }
 
 MIDDLEWARE = [

@@ -83,3 +83,16 @@ Unauthorized: /api/
 Unauthorized: /api/2/
 Unauthorized: /api/2/
 Unauthorized: /api/
+[2020-04-22 11:16:49 +0000] [6117] [INFO] Starting gunicorn 20.0.4
+[2020-04-22 11:16:49 +0000] [6117] [ERROR] Connection in use: ('', 80)
+[2020-04-22 11:16:49 +0000] [6117] [ERROR] Retrying in 1 second.
+[2020-04-22 11:16:50 +0000] [6117] [ERROR] Connection in use: ('', 80)
+[2020-04-22 11:16:50 +0000] [6117] [ERROR] Retrying in 1 second.
+[2020-04-22 11:16:51 +0000] [6117] [ERROR] Connection in use: ('', 80)
+[2020-04-22 11:16:51 +0000] [6117] [ERROR] Retrying in 1 second.
+[2020-04-22 11:16:52 +0000] [6117] [ERROR] Connection in use: ('', 80)
+[2020-04-22 11:16:52 +0000] [6117] [ERROR] Retrying in 1 second.
+[2020-04-22 11:16:53 +0000] [6117] [ERROR] Connection in use: ('', 80)
+[2020-04-22 11:16:53 +0000] [6117] [ERROR] Retrying in 1 second.
+[2020-04-22 11:16:54 +0000] [6117] [ERROR] Can't connect to ('', 80)
+Unauthorized: /api/
