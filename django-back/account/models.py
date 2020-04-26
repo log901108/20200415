@@ -3,7 +3,7 @@
 """
 from django.db import models
 from django.contrib.auth.models import (BaseUserManager, AbstractBaseUser) #BaseUserManager is helper class to create user, AbstractBaseUser is exact model which is inheritatible 
-
+from datetime import datetime
 
 class UserManager(BaseUserManager):
     def create_user(self, email, date_of_birth, password=None):
@@ -37,6 +37,9 @@ class User(AbstractBaseUser):
         unique=True,
     )
     date_of_birth = models.DateField()
+    created_at = models.DateTimeField(auto_now_add=True) #TODO: Created_at setting, you should understand difference between auto_now: insert time every change and auto_now_add:insert time when created option.https://docs.djangoproject.com/en/3.0/ref/models/fields/#datetimefield
+    updated_at = models.DateTimeField(auto_now=True) #TODO: Updated_at setting
+    deleted_at = models.DateTimeField(null=True, blank=True) #TODO: set deleted_at when call deleted.
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
 

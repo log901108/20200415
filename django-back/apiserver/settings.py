@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '$r-$bp4i%-pql!a9$0!n#t(og_rkf(4*^7tm$7pxg1u251s!2p'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False #When using wsgi, static files are charged upon wsgi tools like gunicorn in production
+DEBUG = True #When using wsgi, static files are charged upon wsgi tools like gunicorn in production
 
 ALLOWED_HOSTS = ['*']
 

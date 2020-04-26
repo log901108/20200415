@@ -30,7 +30,8 @@ class UserCreationForm(forms.ModelForm):
 
 class UserChangeForm(forms.ModelForm):
     password = ReadOnlyPasswordHashField()
-
+    #TODO: updated_at, deleted_at update 구현
+    
     class Meta:
         model = User
         fields = ('email', 'password', 'date_of_birth',
