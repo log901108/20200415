@@ -49,7 +49,7 @@ INSTALLED_APPS = [
 REST_FRAMEWORK={
     'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated'],
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication', #JWT Authentication 
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication', #JWT Authentication Setting 
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     )
@@ -63,6 +63,7 @@ JWT_AUTH = {
     'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=28), #SETTING REFRESH TOKEN EXPIRY TIME SETTING
     'JWT_RESPONSE_PAYLOAD_HANDLER':'apiserver.utils.my_jwt_response_handler', #CUSTOM RESPONSE HANDLER SETTING
     'JWT_PAYLOAD_HANDLER': 'apiserver.utils.my_jwt_payload_handler', #CUSTOM JWT PAYLOAD HANDLER SETTING
+    #'JWT_AUTH_COOKIE': 'token', #Transfer JWT token by cookie as given name. It gives the way to authenticate without setting authorization header by default authenticate func at JWT module
 
 }
 
@@ -111,7 +112,7 @@ WSGI_APPLICATION = 'apiserver.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql', #Postgresql settings
         'NAME': 'djdb',
         'USER': 'adm',
         'PASSWORD': 'hjy1234',

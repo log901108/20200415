@@ -26,8 +26,8 @@ class UserList(APIView):
     permission_classes = (permissions.AllowAny,)
 
     def post(self, request, format=None):
-        serializer = UserSerializerWithToken(data=request.data)
+        serializer = UserSerializerWithToken(data=request.data) #serializer changes from django <QUERYSET> to python <DICT> format
         if serializer.is_valid():
-            serializer.save()
+            serializer.save() #if it has self.instance, use update(). if it doesn't have self.instance, use create()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
