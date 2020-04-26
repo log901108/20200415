@@ -39,7 +39,7 @@ class User(AbstractBaseUser):
     date_of_birth = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True) #TODO: Created_at setting, you should understand difference between auto_now: insert time every change and auto_now_add:insert time when created option.https://docs.djangoproject.com/en/3.0/ref/models/fields/#datetimefield
     updated_at = models.DateTimeField(auto_now=True) #TODO: Updated_at setting
-    deleted_at = models.DateTimeField(null=True, blank=True) #TODO: set deleted_at when call deleted.
+    deleted_at = models.DateTimeField(null=True, blank=True) #TODO: set deleted_at when call deleted. the property "is_active" do same function in deleted_at gives also JWT operates by the property. however we still need to get deleted time.
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
 
