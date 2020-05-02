@@ -10,17 +10,36 @@ Serializer is used to change from django '<QUERYSET>' formated data to python '<
 """
 class UserSerializer(serializers.ModelSerializer):
 
+    val = serializers.SerializerMethodField() #read-only field
+    
+    def get_val(self, obj):
+        value = {"a":"1", "b":"2"}
+        return value
+    
     class Meta:
         model = User
-        fields = ('email',)
-
+        fields = ('email', 'val')    
 
 class UserSerializerWithToken(serializers.ModelSerializer):
 
+    #
+    refresh_token = serializers.SerializerMethodField()
+    #
     token = serializers.SerializerMethodField()
     password = serializers.CharField(write_only=True)
     date_of_birth = serializers.DateField()
 
+    def get_refresh_token(self, obj):
+        jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
+        jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
+
+        payload = jwt_payload_handler(obj)
+        refresh_token = jwt_encode_handler(payload)
+        user_instance = User.objects.get(pk=obj.id)
+        user_instance.refresh_token = refresh_token
+        user_instance.save()
+        return refresh_token
+    
     def get_token(self, obj):
         jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
         jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
@@ -55,4 +74,4 @@ class UserSerializerWithToken(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('token', 'email', 'date_of_birth', 'password',)
+        fields = ('token', 'email', 'date_of_birth', 'password', 'refresh_token', )
