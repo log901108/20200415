@@ -1,3 +1,4 @@
+from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import serializers
 from rest_framework_jwt.settings import api_settings
 from account.models import User
@@ -97,7 +98,7 @@ class UserSerializerWithRefreshToken(serializers.ModelSerializer):
                     jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
                     jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
 
-                    payload = jwt_payload_handler(obj)
+                    payload = jwt_payload_handler(obj, True)
                     refresh_token = jwt_encode_handler(payload)
         
                     user_instance.refresh_token = refresh_token
@@ -109,22 +110,14 @@ class UserSerializerWithRefreshToken(serializers.ModelSerializer):
                 jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
                 jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
 
-                payload = jwt_payload_handler(obj)
+                payload = jwt_payload_handler(obj, True)
                 refresh_token = jwt_encode_handler(payload)
         
                 user_instance.refresh_token = refresh_token
                 user_instance.save()
                 return refresh_token
-        else: #TODO: ERROR 발생 시키는게 맞는지.
-            jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
-            jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
-
-            payload = jwt_payload_handler(obj)
-            refresh_token = jwt_encode_handler(payload)
-        
-            user_instance.refresh_token = refresh_token
-            user_instance.save()
-            return refresh_token
+        else: #no user_instance
+            return ObjectDoesNotExist()
     
     def get_token(self, obj):
         jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
@@ -161,3 +154,4 @@ class UserSerializerWithRefreshToken(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('token', 'email', 'date_of_birth', 'password', 'refresh_token', )
+        

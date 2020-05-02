@@ -59,8 +59,8 @@ JWT_AUTH = {
     'JWT_SECRET_KEY': SECRET_KEY, 
     'JWT_ALGORITHM': 'HS256',
     'JWT_ALLOW_REFRESH': True, #SETTING REFRESH AVAILABLE
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7), #SETTING ACCESS TOKEN EXPIRY TIME SETTING
-    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=28), #SETTING REFRESH TOKEN EXPIRY TIME SETTING
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1), #SETTING ACCESS TOKEN EXPIRY TIME SETTING
+    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=1), #SETTING REFRESH TOKEN EXPIRY TIME SETTING
     'JWT_RESPONSE_PAYLOAD_HANDLER':'apiserver.utils.my_jwt_response_handler', #CUSTOM RESPONSE HANDLER SETTING
     'JWT_PAYLOAD_HANDLER': 'apiserver.utils.my_jwt_payload_handler', #CUSTOM JWT PAYLOAD HANDLER SETTING
     #'JWT_AUTH_COOKIE': 'token', #Transfer JWT token by cookie as given name. It gives the way to authenticate without setting authorization header by default authenticate func at JWT module

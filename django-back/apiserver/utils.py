@@ -1,10 +1,10 @@
-from core.serializers import UserSerializer
+from core.serializers import UserSerializer, UserSerializerWithRefreshToken
 import jwt
 import uuid
 
 from django.contrib.auth import get_user_model
 from calendar import timegm
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from rest_framework_jwt.compat import get_username
 from rest_framework_jwt.compat import get_username_field
@@ -12,24 +12,33 @@ from rest_framework_jwt.settings import api_settings
 
 #custom jwt response from /token-auth/ url setting
 def my_jwt_response_handler(token, user=None, request=None):
+    userdata = UserSerializerWithRefreshToken(user, context={'request': request}).data 
     return {
         'token': token,
-        'user': UserSerializer(user, context={'request': request}).data
+        'user': {"email":userdata["email"]} ##
     }
 
 #custom jwt token payload by jwt apis setting
-#ARGS: auth.user
+#ARGS: auth.user, is_refresh_token(BOOL default=False)
 #RETURN : payload 
-def my_jwt_payload_handler(user):
+def my_jwt_payload_handler(user, is_refresh_token = False):
     username_field = get_username_field()
     username = get_username(user)
-
-    payload = {
-        'user_id': user.pk,
-        'username': user.email,
-        'password': user.password,
-        'exp': datetime.utcnow() + api_settings.JWT_EXPIRATION_DELTA
-    }
+    
+    if is_refresh_token == False :   
+        payload = {
+            'user_id': user.pk,
+            'username': user.email,
+            'refresh_token': user.refresh_token,
+            'exp': datetime.utcnow() + api_settings.JWT_EXPIRATION_DELTA
+        }
+    else: #payload for refresh_token
+        payload = {
+            'user_id': user.pk,
+            'username': user.email,
+            'password': user.password,
+            'exp': datetime.utcnow() + timedelta(days=7)
+        }
     #if hasattr(user, 'username'):
     #    payload['username'] = user.username
     if isinstance(user.pk, uuid.UUID):

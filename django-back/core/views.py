@@ -5,18 +5,57 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.reverse import reverse
+from rest_framework_jwt.settings import api_settings
 from .serializers import UserSerializer, UserSerializerWithToken, UserSerializerWithRefreshToken
-
+from rest_framework.authentication import (
+    BaseAuthentication, get_authorization_header
+)
+from django.utils.encoding import smart_text
+from django.utils.translation import ugettext as _
+from rest_framework import exceptions
 
 
 @api_view(['GET'])
 def current_user(request):
-    """
-    Determine the current user by their token, and return their data
-    """
+    www_authenticate_realm = 'api'
+
+    def get_jwt_value(request):
+        auth = get_authorization_header(request).split()
+        auth_header_prefix = api_settings.JWT_AUTH_HEADER_PREFIX.lower()
+
+        if not auth:
+            if api_settings.JWT_AUTH_COOKIE:
+                return request.COOKIES.get(api_settings.JWT_AUTH_COOKIE)
+            return None
+
+        if smart_text(auth[0].lower()) != auth_header_prefix:
+            return None
+
+        if len(auth) == 1:
+            msg = _('Invalid Authorization header. No credentials provided.')
+            raise exceptions.AuthenticationFailed(msg)
+        elif len(auth) > 2:
+            msg = _('Invalid Authorization header. Credentials string '
+                    'should not contain spaces.')
+            raise exceptions.AuthenticationFailed(msg)
+
+        return auth[1]
+
+    def authenticate_header(self, request):
+        return '{0} realm="{1}"'.format(api_settings.JWT_AUTH_HEADER_PREFIX, self.www_authenticate_realm)
     
-    serializer = UserSerializer(request.user) #Serializer(instance=value, data=value, **kwargs)
-    return Response(serializer.data)
+    #1. pk에 해당하는 유저데이터를 가져온다
+    userdata = User.objects.get(pk = request.user.id)
+    jwt_decode_handler = api_settings.JWT_DECODE_HANDLER
+    #2. request Authorization 헤더로부터 access토큰을 가져와서 decode하고 refresh토큰을 파싱한다.
+    access_token = get_jwt_value(request = request)
+    intoken_refresh_token = jwt_decode_handler(access_token)["refresh_token"]
+    #3. 테이블에 있는 refresh_token과 access토큰 내의 refresh_token 값을 비교해서 같으면 인증절차. 아니면 에러
+    if userdata.refresh_token == intoken_refresh_token:
+        serializer = UserSerializerWithRefreshToken(request.user) #Serializer(instance=value, data=value, **kwargs)
+        return Response(serializer.data)
+    else:
+        return Response({"errors":"different refresh_token"})
 
 
 class UserList(APIView):

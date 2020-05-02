@@ -12,7 +12,7 @@ from .serializers import PostSerializer, hyperSerializer, HSerializer
 
 class ListPost(generics.ListCreateAPIView):
     #permission_classes = [IsAuthenticatedOrReadOnly]
-    queryset = Post.objects.all()
+    queryset = Post.objects.all().order_by('-pk')
     serializer_class = PostSerializer
 
 
@@ -26,7 +26,7 @@ def current_user(request):
     """
     Determine the current user by their token, and return their data
     """
-    queryset = Post.objects.all()
+    queryset = Post.objects.all().order_by('pk')
     print(queryset)
     serializer = hyperSerializer(queryset,many=True,context={'request': request}) #Serializer(instance=value, data=value, **kwargs)
     return Response(serializer.data)
