@@ -66,7 +66,9 @@ class UserSerializerWithToken(serializers.ModelSerializer):
 
         
 class UserSerializerWithRefreshToken(serializers.ModelSerializer):
-
+    """
+    This serializer provide refresh_token in db when expired time is valid, or redistribute new refresh_token then save the new token to DB      
+    """
     #
     refresh_token = serializers.SerializerMethodField()
     token = serializers.SerializerMethodField()
@@ -76,7 +78,7 @@ class UserSerializerWithRefreshToken(serializers.ModelSerializer):
 
     def get_refresh_token(self, obj):
         """
-            
+          
         """
         user_instance = User.objects.get(pk=obj.id) #check obj by pk id
         

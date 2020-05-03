@@ -46,16 +46,26 @@ def current_user(request):
     
     #1. pk에 해당하는 유저데이터를 가져온다
     userdata = User.objects.get(pk = request.user.id)
+    
+    #2. request Authorization 헤더로부터 access토큰을 가져와서 decode하고 refresh토큰을 파싱한다. 없으면 에러 발생
     jwt_decode_handler = api_settings.JWT_DECODE_HANDLER
-    #2. request Authorization 헤더로부터 access토큰을 가져와서 decode하고 refresh토큰을 파싱한다.
-    access_token = get_jwt_value(request = request)
-    intoken_refresh_token = jwt_decode_handler(access_token)["refresh_token"]
+    access_token = get_jwt_value(request)
+    
+    if 'refresh_token' in jwt_decode_handler(access_token):
+        intoken_refresh_token = jwt_decode_handler(access_token)["refresh_token"]
+    else:
+        msg = _('INVALID refreh token. DEBUG:token does not have refresh_token')
+        raise exceptions.AuthenticationFailed(msg)
+        return Response({"errors":msg})
+    
     #3. 테이블에 있는 refresh_token과 access토큰 내의 refresh_token 값을 비교해서 같으면 인증절차. 아니면 에러
     if userdata.refresh_token == intoken_refresh_token:
         serializer = UserSerializerWithRefreshToken(request.user) #Serializer(instance=value, data=value, **kwargs)
-        return Response(serializer.data)
+        return Response(serializer.data,status=status.HTTP_200_OK)
     else:
-        return Response({"errors":"different refresh_token"})
+        msg = _('INVALID refreh token. DEBUG: refresh token does not match with DB')
+        raise exceptions.AuthenticationFailed(msg)
+        return Response({"errors":msg})
 
 
 class UserList(APIView):

@@ -12,7 +12,7 @@ from rest_framework_jwt.settings import api_settings
 
 #custom jwt response from /token-auth/ url setting
 def my_jwt_response_handler(token, user=None, request=None):
-    userdata = UserSerializerWithRefreshToken(user, context={'request': request}).data 
+    userdata = UserSerializerWithRefreshToken(user, context={'request': request}).data # refresh_token 발급과정까지 포함
     return {
         'token': token,
         'user': {"email":userdata["email"]} ##
