@@ -18,6 +18,9 @@ from rest_framework import exceptions
 @api_view(['GET'])
 def current_user(request):
     www_authenticate_realm = 'api'
+    print('req:',request.user.is_anonymous)
+    print(type(request))
+    
 
     def get_jwt_value(request):
         auth = get_authorization_header(request).split()
@@ -45,7 +48,7 @@ def current_user(request):
         return '{0} realm="{1}"'.format(api_settings.JWT_AUTH_HEADER_PREFIX, self.www_authenticate_realm)
     
     #1. pk에 해당하는 유저데이터를 가져온다
-    userdata = User.objects.get(pk = request.user.id)
+    #userdata = User.objects.get(pk = request.user.id)
     
     #2. request Authorization 헤더로부터 access토큰을 가져와서 decode하고 refresh토큰을 파싱한다. 없으면 에러 발생
     jwt_decode_handler = api_settings.JWT_DECODE_HANDLER
@@ -59,7 +62,7 @@ def current_user(request):
         return Response({"errors":msg})
     
     #3. 테이블에 있는 refresh_token과 access토큰 내의 refresh_token 값을 비교해서 같으면 인증절차. 아니면 에러
-    if userdata.refresh_token == intoken_refresh_token:
+    if request.user.refresh_token == intoken_refresh_token:
         serializer = UserSerializerWithRefreshToken(request.user) #Serializer(instance=value, data=value, **kwargs)
         return Response(serializer.data,status=status.HTTP_200_OK)
     else:

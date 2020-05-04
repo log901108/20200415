@@ -25,7 +25,7 @@ def my_jwt_payload_handler(user, is_refresh_token = False):
     username_field = get_username_field()
     username = get_username(user)
     
-    if is_refresh_token == False :   
+    if is_refresh_token is False :   
         payload = {
             'user_id': user.pk,
             'username': user.email,
