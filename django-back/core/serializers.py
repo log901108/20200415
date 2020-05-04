@@ -1,4 +1,4 @@
-from django.core.exceptions import ObjectDoesNotExist
+import jwt
 from rest_framework import serializers
 from rest_framework_jwt.settings import api_settings
 from account.models import User
@@ -86,7 +86,6 @@ class UserSerializerWithRefreshToken(serializers.ModelSerializer):
         """
         리프레시 토큰 발행 함수 
         """
-        #user_instance = User.objects.get(pk=obj.id) #check obj by pk id
         
         if obj is not None:
             print('user instance is not none:', obj)
@@ -94,7 +93,15 @@ class UserSerializerWithRefreshToken(serializers.ModelSerializer):
             if obj.refresh_token is not None:
                 print('refresh_token is not none:', obj.refresh_token)
                 jwt_decode_handler = api_settings.JWT_DECODE_HANDLER
-                payload = jwt_decode_handler(obj.refresh_token) #TODO: 잘못된 토큰값에 대한 반응 분기
+                # 잘못된 토큰값에 대한 반응 분기
+                try:
+                    payload = jwt_decode_handler(obj.refresh_token)
+                except jwt.ExpiredSignature:
+                    msg = _('Signature has expired.')
+                    raise serializers.ValidationError(msg)
+                except jwt.DecodeError:
+                    msg = _('Error decoding signature.')
+                    raise serializers.ValidationError(msg)
                 print("payload:",payload["exp"])
                 refresh_exp = payload["exp"]
                 print("now", time())
@@ -125,7 +132,8 @@ class UserSerializerWithRefreshToken(serializers.ModelSerializer):
                 obj.save() #이부분에서 obj(user model instance)가 업데이트되어 access token 발행시 refresh_token을 포함하여 발행
                 return refresh_token
         else: #no user_instance
-            return ObjectDoesNotExist()
+            msg = _('no user instance')
+            raise serializers.ValidationError(msg)
     
     def get_token(self, obj):
         jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
@@ -147,9 +155,11 @@ class UserSerializerWithRefreshToken(serializers.ModelSerializer):
                 instance.save()
                 return instance   
             except: 
-                return ObjectDoesNotExist()
+                msg = _('set attr error')
+                raise serializers.ValidationError(msg)
         else: 
-            return ObjectDoesNotExist()
+            msg = _('required field no value')
+            raise serializers.ValidationError(msg)
         
     
     def update(self, instance, validated_data):
