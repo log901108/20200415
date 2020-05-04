@@ -84,7 +84,7 @@ class UserSerializerWithRefreshToken(serializers.ModelSerializer):
 
     def get_refresh_token(self, obj):
         """
-          
+        리프레시 토큰 발행 함수 
         """
         #user_instance = User.objects.get(pk=obj.id) #check obj by pk id
         
@@ -122,7 +122,7 @@ class UserSerializerWithRefreshToken(serializers.ModelSerializer):
                 refresh_token = jwt_encode_handler(payload)
         
                 obj.refresh_token = refresh_token
-                obj.save()
+                obj.save() #이부분에서 obj(user model instance)가 업데이트되어 access token 발행시 refresh_token을 포함하여 발행
                 return refresh_token
         else: #no user_instance
             return ObjectDoesNotExist()
@@ -145,10 +145,9 @@ class UserSerializerWithRefreshToken(serializers.ModelSerializer):
             try:       
                 setattr(instance, 'date_of_birth', date_of_birth) #set value at specific attribute in the object
                 instance.save()
-                return instance
-                
-            except: ObjectDoesNotExist()
-
+                return instance   
+            except: 
+                return ObjectDoesNotExist()
         else: 
             return ObjectDoesNotExist()
         
@@ -167,5 +166,13 @@ class UserSerializerWithRefreshToken(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('email', 'date_of_birth', 'password', 'refresh_token', 'token',)
+        fields = ('email', 'date_of_birth', 'password', 'refresh_token', 'token',) #순서 중요. token이 나중에 불러져야 refresh_token이 생성되서 token payload에 포함됨
+        """
+        Django 아키텍쳐상 (MTV) MVC와 달리
+        Model View Template
+        Model DB 구조 결정
+        View Controller db와 view의 html을 연결
+        Template View html구조
+        의 구조를 가지므로 Serializer에서 DB와 연결된 작업을 하는 것이 맞는지 모르겠다. 근데 보니깐 serializer 공식페이지에서 그렇게 사용하네...
+        """
         

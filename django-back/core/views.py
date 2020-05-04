@@ -1,3 +1,4 @@
+import jwt
 from django.http import HttpResponseRedirect
 from account.models import User
 from rest_framework import permissions, status
@@ -22,7 +23,7 @@ def current_user(request):
     print(type(request))
     
 
-    def get_jwt_value(request):
+    def get_jwt_value(request): #function for parsing Authorization header
         auth = get_authorization_header(request).split()
         auth_header_prefix = api_settings.JWT_AUTH_HEADER_PREFIX.lower()
 
@@ -41,14 +42,12 @@ def current_user(request):
             msg = _('Invalid Authorization header. Credentials string '
                     'should not contain spaces.')
             raise exceptions.AuthenticationFailed(msg)
-
         return auth[1]
 
     def authenticate_header(self, request):
         return '{0} realm="{1}"'.format(api_settings.JWT_AUTH_HEADER_PREFIX, self.www_authenticate_realm)
     
-    #1. pk에 해당하는 유저데이터를 가져온다
-    #userdata = User.objects.get(pk = request.user.id)
+    #1. request로 들어온 정보를 middleware에서 유저에 해당하는 model instance를 가져온다
     
     #2. request Authorization 헤더로부터 access토큰을 가져와서 decode하고 refresh토큰을 파싱한다. 없으면 에러 발생
     jwt_decode_handler = api_settings.JWT_DECODE_HANDLER
@@ -63,8 +62,17 @@ def current_user(request):
     
     #3. 테이블에 있는 refresh_token과 access토큰 내의 refresh_token 값을 비교해서 같으면 인증절차. 아니면 에러
     if request.user.refresh_token == intoken_refresh_token:
-        serializer = UserSerializerWithRefreshToken(request.user) #Serializer(instance=value, data=value, **kwargs)
-        return Response(serializer.data,status=status.HTTP_200_OK)
+        jwt_decode_handler = api_settings.JWT_DECODE_HANDLER
+        try:
+            payload = jwt_decode_handler(request.user.refresh_token)
+            serializer = UserSerializerWithRefreshToken(request.user) #Serializer(instance=value, data=value, **kwargs)
+            return Response(serializer.data,status=status.HTTP_200_OK)
+        except jwt.ExpiredSignature:
+            msg = _('Signature has expired.')
+            raise serializers.ValidationError(msg)
+        except jwt.DecodeError:
+            msg = _('Error decoding signature.')
+            raise serializers.ValidationError(msg)
     else:
         msg = _('INVALID refreh token. DEBUG: refresh token does not match with DB')
         raise exceptions.AuthenticationFailed(msg)
