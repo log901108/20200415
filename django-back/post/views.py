@@ -9,6 +9,8 @@ from rest_framework.response import Response
 from .models import Post
 from .serializers import PostSerializer, hyperSerializer, HSerializer
 
+import pika
+
 
 class ListPost(generics.ListCreateAPIView):
     #permission_classes = [IsAuthenticatedOrReadOnly]
@@ -28,5 +30,18 @@ def current_user(request):
     """
     queryset = Post.objects.all().order_by('pk')
     print(queryset)
+    ##
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+    channel = connection.channel()
+
+
+    channel.queue_declare(queue='hello')
+
+    channel.basic_publish(exchange='',
+                      routing_key='hello',
+                      body=queryset)
+    print(" [x] Sent 'Hello World!'")
+    connection.close()
+    ##
     serializer = hyperSerializer(queryset,many=True,context={'request': request}) #Serializer(instance=value, data=value, **kwargs)
     return Response(serializer.data)

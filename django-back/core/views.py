@@ -15,13 +15,26 @@ from django.utils.encoding import smart_text
 from django.utils.translation import ugettext as _
 from rest_framework import exceptions
 
+import pika
 
 @api_view(['GET'])
 def current_user(request):
     www_authenticate_realm = 'api'
     print('req:',request.user.is_anonymous)
-    print(type(request))
-    
+    print(str(type(request)))
+    ##
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+    channel = connection.channel()
+
+
+    channel.queue_declare(queue='hello')
+
+    channel.basic_publish(exchange='',
+                      routing_key='hello',
+                      body=str(request.user))
+    print(" [x] Sent 'Hello World!'")
+    connection.close()
+    ##
 
     def get_jwt_value(request): #function for parsing Authorization header
         auth = get_authorization_header(request).split()
