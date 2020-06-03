@@ -21,9 +21,14 @@ import pika
 def current_user(request):
     www_authenticate_realm = 'api'
     print('req:',request.user.is_anonymous)
-    print(str(type(request)))
+    print(request.path)
     ##
-    connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+    credentials = pika.PlainCredentials('testuser', 'test')
+    parameters = pika.ConnectionParameters('localhost',
+                                       5672,
+                                       'vh1',
+                                       credentials)
+    connection = pika.BlockingConnection(parameters)
     channel = connection.channel()
 
 
@@ -31,7 +36,7 @@ def current_user(request):
 
     channel.basic_publish(exchange='',
                       routing_key='hello',
-                      body=str(request.user))
+                      body=str(request.path))
     print(" [x] Sent 'Hello World!'")
     connection.close()
     ##
