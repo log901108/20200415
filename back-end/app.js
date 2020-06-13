@@ -10,6 +10,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var authRouter = require('./routes/api/auth');
 var postRouter = require('./routes/api/posts');
+var tableRouter = require('./routes/api/table');
 
 
 var mjwtdecode = require('./routes/api/auth/middle/mjwtdecode');
@@ -35,6 +36,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/api/auth',authRouter);
 app.use('/api/posts', postRouter);
+app.use('/api/table', tableRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

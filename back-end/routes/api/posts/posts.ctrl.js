@@ -207,8 +207,5 @@ module.exports.taglist = async (req,res, next) => {
 			res.status(200).send(array);
 		}).catch((err)=>{
 			res.status(500).send({err});
-		})
-
-
-	
-};
+		})	
+}
