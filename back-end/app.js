@@ -11,7 +11,12 @@ var usersRouter = require('./routes/users');
 var authRouter = require('./routes/api/auth');
 var postRouter = require('./routes/api/posts');
 var tableRouter = require('./routes/api/table');
+var cron = require('node-cron');
 
+// second minute hour day-of-month month day-of-week
+cron.schedule('* * * * *', function(){
+  console.log('node-cron 실행 테스트');
+});
 
 var mjwtdecode = require('./routes/api/auth/middle/mjwtdecode');
 
