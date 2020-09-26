@@ -1,0 +1,274 @@
+/workspace/20200415/back-end/env/lib/python2.7/site-packages/celery/platforms.py:801: RuntimeWarning: You're running the worker with superuser privileges: this is
+absolutely not recommended!
+
+Please specify a different user using the --uid option.
+
+User information: uid=0 euid=0 gid=0 egid=0
+
+  uid=uid, euid=euid, gid=gid, egid=egid,
+[2020-06-14 07:50:54,464: INFO/MainProcess] Connected to amqp://guest:**@127.0.0.1:5672//
+[2020-06-14 07:50:54,538: INFO/MainProcess] mingle: searching for neighbors
+[2020-06-14 07:50:55,711: INFO/MainProcess] mingle: all alone
+[2020-06-14 07:50:55,768: INFO/MainProcess] celery@goorm ready.
+[2020-06-14 07:51:40,336: INFO/MainProcess] Received task: tasks.add[dc1a3634-5209-43dc-991c-c9fadb5c222c]  
+[2020-06-14 07:51:40,340: INFO/ForkPoolWorker-1] Task tasks.add[dc1a3634-5209-43dc-991c-c9fadb5c222c] succeeded in 0.000421076001658s: 3
+[2020-06-14 07:51:41,447: INFO/MainProcess] Received task: tasks.add[2806323b-40df-45a1-b409-07bebc9f2f9f]  
+[2020-06-14 07:51:41,452: INFO/ForkPoolWorker-1] Task tasks.add[2806323b-40df-45a1-b409-07bebc9f2f9f] succeeded in 0.000101149000329s: 3
+[2020-06-14 07:51:42,479: INFO/MainProcess] Received task: tasks.add[376b0744-770a-410c-af13-c02f27676eed]  
+[2020-06-14 07:51:42,480: INFO/ForkPoolWorker-1] Task tasks.add[376b0744-770a-410c-af13-c02f27676eed] succeeded in 0.000123361000078s: 3
+[2020-06-14 07:51:43,634: INFO/MainProcess] Received task: tasks.add[0913deeb-bfc6-40fc-8613-07a3d0a2aabd]  
+[2020-06-14 07:51:43,638: INFO/ForkPoolWorker-1] Task tasks.add[0913deeb-bfc6-40fc-8613-07a3d0a2aabd] succeeded in 0.000110576000225s: 3
+[2020-06-14 07:51:44,689: INFO/MainProcess] Received task: tasks.add[f39e2e24-8ed8-49bd-a400-66ca42512c67]  
+[2020-06-14 07:51:44,691: INFO/ForkPoolWorker-1] Task tasks.add[f39e2e24-8ed8-49bd-a400-66ca42512c67] succeeded in 0.000116262001029s: 3
+[2020-06-14 07:51:45,816: INFO/MainProcess] Received task: tasks.add[ae4358a1-d2b3-4a3b-960a-2f333b498e16]  
+[2020-06-14 07:51:45,817: INFO/ForkPoolWorker-1] Task tasks.add[ae4358a1-d2b3-4a3b-960a-2f333b498e16] succeeded in 0.000120794000395s: 3
+[2020-06-14 07:51:46,791: INFO/MainProcess] Received task: tasks.add[3cee60e8-e742-4b62-890d-e4eccd1e537c]  
+[2020-06-14 07:51:46,792: INFO/ForkPoolWorker-1] Task tasks.add[3cee60e8-e742-4b62-890d-e4eccd1e537c] succeeded in 0.000118124999062s: 3
+[2020-06-14 07:51:47,917: INFO/MainProcess] Received task: tasks.add[d89be60f-5bb7-4ccb-b007-5fc75c9748db]  
+[2020-06-14 07:51:47,920: INFO/ForkPoolWorker-1] Task tasks.add[d89be60f-5bb7-4ccb-b007-5fc75c9748db] succeeded in 0.000109824000901s: 3
+[2020-06-14 07:51:48,928: INFO/MainProcess] Received task: tasks.add[6dd0b319-3675-4631-b376-c7d4913e1369]  
+[2020-06-14 07:51:48,929: INFO/ForkPoolWorker-1] Task tasks.add[6dd0b319-3675-4631-b376-c7d4913e1369] succeeded in 0.000102583000626s: 3
+[2020-06-14 07:51:49,922: INFO/MainProcess] Received task: tasks.add[df679f2f-8604-41b0-b477-e45eb8e83508]  
+[2020-06-14 07:51:49,928: INFO/ForkPoolWorker-1] Task tasks.add[df679f2f-8604-41b0-b477-e45eb8e83508] succeeded in 0.000108873000499s: 3
+[2020-06-14 07:51:51,035: INFO/MainProcess] Received task: tasks.add[c436a9e2-672f-48c9-92ef-107bdc4a080a]  
+[2020-06-14 07:51:51,036: INFO/ForkPoolWorker-1] Task tasks.add[c436a9e2-672f-48c9-92ef-107bdc4a080a] succeeded in 0.000121932000184s: 3
+[2020-06-14 07:51:52,143: INFO/MainProcess] Received task: tasks.add[1db2b992-9a00-4004-b2b6-58140f3c3951]  
+[2020-06-14 07:51:52,144: INFO/ForkPoolWorker-1] Task tasks.add[1db2b992-9a00-4004-b2b6-58140f3c3951] succeeded in 0.0001147389994s: 3
+[2020-06-14 07:51:53,210: INFO/MainProcess] Received task: tasks.add[197f9fb2-1e7a-4845-9e14-f2c0f4d8734a]  
+[2020-06-14 07:51:53,211: INFO/ForkPoolWorker-1] Task tasks.add[197f9fb2-1e7a-4845-9e14-f2c0f4d8734a] succeeded in 0.000197706000108s: 3
+[2020-06-14 07:51:54,542: INFO/MainProcess] Received task: tasks.add[da363b12-3ca0-44a5-947c-1afb8bab6efd]  
+[2020-06-14 07:51:54,544: INFO/ForkPoolWorker-1] Task tasks.add[da363b12-3ca0-44a5-947c-1afb8bab6efd] succeeded in 0.000127655999677s: 3
+[2020-06-14 07:51:55,418: INFO/MainProcess] Received task: tasks.add[f1813751-d9d8-494b-b1c7-9ba216f29e3e]  
+[2020-06-14 07:51:55,422: INFO/ForkPoolWorker-1] Task tasks.add[f1813751-d9d8-494b-b1c7-9ba216f29e3e] succeeded in 0.000119323998661s: 3
+[2020-06-14 07:51:56,630: INFO/MainProcess] Received task: tasks.add[c982fa00-ac09-4583-b7bf-eebd396bb4e5]  
+[2020-06-14 07:51:56,631: INFO/ForkPoolWorker-1] Task tasks.add[c982fa00-ac09-4583-b7bf-eebd396bb4e5] succeeded in 0.000367008999092s: 3
+[2020-06-14 07:51:57,920: INFO/MainProcess] Received task: tasks.add[b6fe570e-71b7-4804-b05d-689bd5d9ec01]  
+[2020-06-14 07:51:57,921: INFO/ForkPoolWorker-1] Task tasks.add[b6fe570e-71b7-4804-b05d-689bd5d9ec01] succeeded in 0.000127137000163s: 3
+[2020-06-14 07:51:58,934: INFO/MainProcess] Received task: tasks.add[47bbcf0e-2c39-49b8-9d56-fb8570c07b71]  
+[2020-06-14 07:51:58,935: INFO/ForkPoolWorker-1] Task tasks.add[47bbcf0e-2c39-49b8-9d56-fb8570c07b71] succeeded in 0.000252657999226s: 3
+[2020-06-14 07:52:00,018: INFO/MainProcess] Received task: tasks.add[68a82848-8bef-4635-847b-aaade9e93b8d]  
+[2020-06-14 07:52:00,019: INFO/ForkPoolWorker-1] Task tasks.add[68a82848-8bef-4635-847b-aaade9e93b8d] succeeded in 0.000115412998639s: 3
+[2020-06-14 07:52:01,127: INFO/MainProcess] Received task: tasks.add[183aca65-77fb-467b-8495-8a9a2ef1c8c3]  
+[2020-06-14 07:52:01,128: INFO/ForkPoolWorker-1] Task tasks.add[183aca65-77fb-467b-8495-8a9a2ef1c8c3] succeeded in 0.000114702999781s: 3
+[2020-06-14 07:52:02,131: INFO/MainProcess] Received task: tasks.add[e9817b1d-8f9d-45b5-95b2-c6f4ef8ec459]  
+[2020-06-14 07:52:02,202: INFO/ForkPoolWorker-1] Task tasks.add[e9817b1d-8f9d-45b5-95b2-c6f4ef8ec459] succeeded in 0.000119610000183s: 3
+[2020-06-14 07:52:03,409: INFO/MainProcess] Received task: tasks.add[ac395761-786a-421a-add4-f9aa035e7c5b]  
+[2020-06-14 07:52:03,414: INFO/ForkPoolWorker-1] Task tasks.add[ac395761-786a-421a-add4-f9aa035e7c5b] succeeded in 0.000113402998977s: 3
+[2020-06-14 07:52:04,610: INFO/MainProcess] Received task: tasks.add[96b71356-cb5f-41c2-94ca-531c3ce44bac]  
+[2020-06-14 07:52:04,612: INFO/ForkPoolWorker-1] Task tasks.add[96b71356-cb5f-41c2-94ca-531c3ce44bac] succeeded in 0.000109489001261s: 3
+[2020-06-14 07:52:05,710: INFO/MainProcess] Received task: tasks.add[72f1c891-8d37-4404-93e0-020f20e68fea]  
+[2020-06-14 07:52:05,711: INFO/ForkPoolWorker-1] Task tasks.add[72f1c891-8d37-4404-93e0-020f20e68fea] succeeded in 0.000247713000135s: 3
+[2020-06-14 07:52:06,716: INFO/MainProcess] Received task: tasks.add[5335d144-eacc-4e94-963f-33b7ae5383d3]  
+[2020-06-14 07:52:06,721: INFO/ForkPoolWorker-1] Task tasks.add[5335d144-eacc-4e94-963f-33b7ae5383d3] succeeded in 0.00011951399938s: 3
+[2020-06-14 07:52:07,849: INFO/MainProcess] Received task: tasks.add[7fd70cfc-e7c8-43fd-8863-2cf049ee3991]  
+[2020-06-14 07:52:07,856: INFO/ForkPoolWorker-1] Task tasks.add[7fd70cfc-e7c8-43fd-8863-2cf049ee3991] succeeded in 0.00011660599921s: 3
+[2020-06-14 07:52:09,017: INFO/MainProcess] Received task: tasks.add[f97fffb9-6785-4464-8088-2706acccea64]  
+[2020-06-14 07:52:09,023: INFO/ForkPoolWorker-1] Task tasks.add[f97fffb9-6785-4464-8088-2706acccea64] succeeded in 0.000123374000395s: 3
+[2020-06-14 07:52:10,040: INFO/MainProcess] Received task: tasks.add[6b154eaa-c3e1-4242-83cd-7fd6376ae63d]  
+[2020-06-14 07:52:10,042: INFO/ForkPoolWorker-1] Task tasks.add[6b154eaa-c3e1-4242-83cd-7fd6376ae63d] succeeded in 0.000116610999612s: 3
+[2020-06-14 07:52:11,220: INFO/MainProcess] Received task: tasks.add[a989eacd-6ebe-485f-85e9-eed03552bec9]  
+[2020-06-14 07:52:11,224: INFO/ForkPoolWorker-1] Task tasks.add[a989eacd-6ebe-485f-85e9-eed03552bec9] succeeded in 0.000110736000352s: 3
+[2020-06-14 07:52:12,704: INFO/MainProcess] Received task: tasks.add[d4c6a768-a31e-417d-9161-8bee2dfccace]  
+[2020-06-14 07:52:12,708: INFO/ForkPoolWorker-1] Task tasks.add[d4c6a768-a31e-417d-9161-8bee2dfccace] succeeded in 0.000117557001431s: 3
+[2020-06-14 07:52:13,906: INFO/MainProcess] Received task: tasks.add[75fbb715-427c-4857-ab22-9cb557c3bb12]  
+[2020-06-14 07:52:13,909: INFO/ForkPoolWorker-1] Task tasks.add[75fbb715-427c-4857-ab22-9cb557c3bb12] succeeded in 0.000111362000098s: 3
+[2020-06-14 07:52:14,827: INFO/MainProcess] Received task: tasks.add[b5d13ee9-0346-460a-8a67-6feefa38971c]  
+[2020-06-14 07:52:14,838: INFO/ForkPoolWorker-1] Task tasks.add[b5d13ee9-0346-460a-8a67-6feefa38971c] succeeded in 0.000112472000183s: 3
+[2020-06-14 07:52:16,403: INFO/MainProcess] Received task: tasks.add[a79d7b0c-9083-4221-9637-f65d74660629]  
+[2020-06-14 07:52:16,404: INFO/ForkPoolWorker-1] Task tasks.add[a79d7b0c-9083-4221-9637-f65d74660629] succeeded in 0.000120735001474s: 3
+[2020-06-14 07:52:17,720: INFO/MainProcess] Received task: tasks.add[4d088716-6fd9-4cfa-904a-6ed289c8398d]  
+[2020-06-14 07:52:17,722: INFO/ForkPoolWorker-1] Task tasks.add[4d088716-6fd9-4cfa-904a-6ed289c8398d] succeeded in 0.000116324999908s: 3
+[2020-06-14 07:52:18,803: INFO/MainProcess] Received task: tasks.add[8f1a13e1-cacf-48b0-a6e7-d7ed16bfea87]  
+[2020-06-14 07:52:18,807: INFO/ForkPoolWorker-1] Task tasks.add[8f1a13e1-cacf-48b0-a6e7-d7ed16bfea87] succeeded in 0.00011249399904s: 3
+[2020-06-14 07:52:19,806: INFO/MainProcess] Received task: tasks.add[66082d2f-c903-4967-929e-f3edf63b6315]  
+[2020-06-14 07:52:19,810: INFO/ForkPoolWorker-1] Task tasks.add[66082d2f-c903-4967-929e-f3edf63b6315] succeeded in 0.000115335000373s: 3
+[2020-06-14 07:52:21,204: INFO/MainProcess] Received task: tasks.add[35fc040d-a6a5-4e03-9e97-b290fe888b45]  
+[2020-06-14 07:52:21,206: INFO/ForkPoolWorker-1] Task tasks.add[35fc040d-a6a5-4e03-9e97-b290fe888b45] succeeded in 0.000109980999696s: 3
+[2020-06-14 07:52:22,234: INFO/MainProcess] Received task: tasks.add[7a844633-f33b-45c2-8d00-4c12c54571f3]  
+[2020-06-14 07:52:22,302: INFO/ForkPoolWorker-1] Task tasks.add[7a844633-f33b-45c2-8d00-4c12c54571f3] succeeded in 0.000110679999125s: 3
+[2020-06-14 07:52:23,328: INFO/MainProcess] Received task: tasks.add[1dec1f84-368d-4aee-8c42-dddb965ebf20]  
+[2020-06-14 07:52:23,331: INFO/ForkPoolWorker-1] Task tasks.add[1dec1f84-368d-4aee-8c42-dddb965ebf20] succeeded in 0.000112706999062s: 3
+[2020-06-14 07:52:24,702: INFO/MainProcess] Received task: tasks.add[f3d2c279-eef5-402d-bd04-25276a6a214d]  
+[2020-06-14 07:52:24,704: INFO/ForkPoolWorker-1] Task tasks.add[f3d2c279-eef5-402d-bd04-25276a6a214d] succeeded in 0.000113386999146s: 3
+[2020-06-14 07:52:25,839: INFO/MainProcess] Received task: tasks.add[2be8e28b-81a3-4e17-89fe-d06a45de6cdd]  
+[2020-06-14 07:52:25,841: INFO/ForkPoolWorker-1] Task tasks.add[2be8e28b-81a3-4e17-89fe-d06a45de6cdd] succeeded in 0.000117433999549s: 3
+[2020-06-14 07:52:27,149: INFO/MainProcess] Received task: tasks.add[c7fbeb25-7481-47f3-adb6-b232438b29f5]  
+[2020-06-14 07:52:27,150: INFO/ForkPoolWorker-1] Task tasks.add[c7fbeb25-7481-47f3-adb6-b232438b29f5] succeeded in 0.000109096001324s: 3
+[2020-06-14 07:52:28,615: INFO/MainProcess] Received task: tasks.add[e61b1697-9a06-4012-b8a2-4ca2967a8346]  
+[2020-06-14 07:52:28,617: INFO/ForkPoolWorker-1] Task tasks.add[e61b1697-9a06-4012-b8a2-4ca2967a8346] succeeded in 0.000114778000352s: 3
+[2020-06-14 07:52:29,702: INFO/MainProcess] Received task: tasks.add[c2187579-35a1-4d2a-96e0-6c754e849c33]  
+[2020-06-14 07:52:29,729: INFO/ForkPoolWorker-1] Task tasks.add[c2187579-35a1-4d2a-96e0-6c754e849c33] succeeded in 0.000123140000142s: 3
+[2020-06-14 07:52:30,826: INFO/MainProcess] Received task: tasks.add[c9ecf341-bd7a-41fa-8ac0-362bd7f02a21]  
+[2020-06-14 07:52:30,902: INFO/ForkPoolWorker-1] Task tasks.add[c9ecf341-bd7a-41fa-8ac0-362bd7f02a21] succeeded in 0.000108746999103s: 3
+[2020-06-14 07:52:32,203: INFO/MainProcess] Received task: tasks.add[359cdf69-eed7-4470-9b2b-0c46c65279c3]  
+[2020-06-14 07:52:32,204: INFO/ForkPoolWorker-1] Task tasks.add[359cdf69-eed7-4470-9b2b-0c46c65279c3] succeeded in 0.000112301000627s: 3
+[2020-06-14 07:52:33,835: INFO/MainProcess] Received task: tasks.add[b1a84a13-5848-47e7-badf-e4a5e6d9a301]  
+[2020-06-14 07:52:33,838: INFO/ForkPoolWorker-1] Task tasks.add[b1a84a13-5848-47e7-badf-e4a5e6d9a301] succeeded in 0.00167561099988s: 3
+[2020-06-14 07:53:01,056: INFO/MainProcess] Received task: tasks.add[bea3b503-3f31-45d6-88f3-bcf7d11e191d]  
+[2020-06-14 07:53:01,064: INFO/ForkPoolWorker-1] Task tasks.add[bea3b503-3f31-45d6-88f3-bcf7d11e191d] succeeded in 0.000127397999677s: 11
+[2020-06-14 07:53:02,182: INFO/MainProcess] Received task: tasks.add[ef8b8e26-cefd-4e56-a005-d0068cb18901]  
+[2020-06-14 07:53:02,186: INFO/ForkPoolWorker-1] Task tasks.add[ef8b8e26-cefd-4e56-a005-d0068cb18901] succeeded in 0.000111295999886s: 11
+[2020-06-14 07:53:03,241: INFO/MainProcess] Received task: tasks.add[429e6a5f-8ff9-400d-8cbd-10f7dcd09479]  
+[2020-06-14 07:53:03,245: INFO/ForkPoolWorker-1] Task tasks.add[429e6a5f-8ff9-400d-8cbd-10f7dcd09479] succeeded in 0.000224056000661s: 11
+[2020-06-14 07:53:04,332: INFO/MainProcess] Received task: tasks.add[7f6ccb45-13f5-4a4f-95fb-f1192682731b]  
+[2020-06-14 07:53:04,334: INFO/ForkPoolWorker-1] Task tasks.add[7f6ccb45-13f5-4a4f-95fb-f1192682731b] succeeded in 0.00034647999928s: 11
+[2020-06-14 07:53:05,427: INFO/MainProcess] Received task: tasks.add[5db68b8d-7ea6-486d-8dfc-0ab2f9e1c66c]  
+[2020-06-14 07:53:05,429: INFO/ForkPoolWorker-1] Task tasks.add[5db68b8d-7ea6-486d-8dfc-0ab2f9e1c66c] succeeded in 0.000333225998475s: 11
+[2020-06-14 07:53:06,610: INFO/MainProcess] Received task: tasks.add[9b35cb2d-a540-4d38-ab61-d96b0d979baf]  
+[2020-06-14 07:53:06,618: INFO/ForkPoolWorker-1] Task tasks.add[9b35cb2d-a540-4d38-ab61-d96b0d979baf] succeeded in 0.000115593998999s: 11
+[2020-06-14 07:53:07,723: INFO/MainProcess] Received task: tasks.add[bc4a447a-c7ec-415f-a4e8-03745e570aa2]  
+[2020-06-14 07:53:07,725: INFO/ForkPoolWorker-1] Task tasks.add[bc4a447a-c7ec-415f-a4e8-03745e570aa2] succeeded in 0.000128712999867s: 11
+[2020-06-14 07:53:08,806: INFO/MainProcess] Received task: tasks.add[a2e92f0a-9f25-4963-81fa-5df9b1fe1bcb]  
+[2020-06-14 07:53:08,808: INFO/ForkPoolWorker-1] Task tasks.add[a2e92f0a-9f25-4963-81fa-5df9b1fe1bcb] succeeded in 0.000116920999062s: 11
+[2020-06-14 07:53:09,910: INFO/MainProcess] Received task: tasks.add[9ef6e6b9-f157-4f0e-b70b-51297aa317b6]  
+[2020-06-14 07:53:09,913: INFO/ForkPoolWorker-1] Task tasks.add[9ef6e6b9-f157-4f0e-b70b-51297aa317b6] succeeded in 0.00011038699995s: 11
+[2020-06-14 07:53:11,008: INFO/MainProcess] Received task: tasks.add[54e70663-1ba0-440e-a2c6-074081082a74]  
+[2020-06-14 07:53:11,014: INFO/ForkPoolWorker-1] Task tasks.add[54e70663-1ba0-440e-a2c6-074081082a74] succeeded in 0.000117734000014s: 11
+[2020-06-14 07:53:12,110: INFO/MainProcess] Received task: tasks.add[a3b3a3ab-145c-4a66-8743-a9f3bf4eb3bb]  
+[2020-06-14 07:53:12,112: INFO/ForkPoolWorker-1] Task tasks.add[a3b3a3ab-145c-4a66-8743-a9f3bf4eb3bb] succeeded in 0.000113324000267s: 11
+[2020-06-14 07:53:13,121: INFO/MainProcess] Received task: tasks.add[1f6a6a4c-e063-4ef1-8ab4-a53205ddf536]  
+[2020-06-14 07:53:13,127: INFO/ForkPoolWorker-1] Task tasks.add[1f6a6a4c-e063-4ef1-8ab4-a53205ddf536] succeeded in 0.000810113000625s: 11
+[2020-06-14 07:53:14,130: INFO/MainProcess] Received task: tasks.add[d5954e11-7263-4cde-91f9-d2f32c7d2596]  
+[2020-06-14 07:53:14,202: INFO/ForkPoolWorker-1] Task tasks.add[d5954e11-7263-4cde-91f9-d2f32c7d2596] succeeded in 0.000123878000522s: 11
+[2020-06-14 07:53:15,340: INFO/MainProcess] Received task: tasks.add[f2c8d68d-bf53-42d3-affd-aafc796aaa04]  
+[2020-06-14 07:53:15,342: INFO/ForkPoolWorker-1] Task tasks.add[f2c8d68d-bf53-42d3-affd-aafc796aaa04] succeeded in 0.000384339000448s: 11
+
+worker: Hitting Ctrl+C again will terminate all running tasks!
+
+worker: Warm shutdown (MainProcess)
+ 
+ -------------- celery@goorm v4.4.5 (cliffs)
+--- ***** ----- 
+-- ******* ---- Linux-4.4.0-1109-aws-x86_64-with-Ubuntu-18.04-bionic 2020-06-14 07:50:54
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         tasks:0x7f3a19480590
+- ** ---------- .> transport:   amqp://guest:**@localhost:5672//
+- ** ---------- .> results:     disabled://
+- *** --- * --- .> concurrency: 2 (prefork)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> celery           exchange=celery(direct) key=celery
+                
+
+[tasks]
+  . tasks.add
+
+
+worker: Cold shutdown (MainProcess)
+[2020-06-14 07:58:42,020: WARNING/MainProcess] Exception
+[2020-06-14 07:58:42,020: WARNING/MainProcess] KeyError
+[2020-06-14 07:58:42,020: WARNING/MainProcess] :
+[2020-06-14 07:58:42,021: WARNING/MainProcess] KeyError(139887574759232,)
+[2020-06-14 07:58:42,021: WARNING/MainProcess] in
+[2020-06-14 07:58:42,021: WARNING/MainProcess] <module 'threading' from '/usr/lib/python2.7/threading.pyc'>
+[2020-06-14 07:58:42,021: WARNING/MainProcess] ignored
+/workspace/20200415/back-end/env/lib/python2.7/site-packages/celery/platforms.py:801: RuntimeWarning: You're running the worker with superuser privileges: this is
+absolutely not recommended!
+
+Please specify a different user using the --uid option.
+
+User information: uid=0 euid=0 gid=0 egid=0
+
+  uid=uid, euid=euid, gid=gid, egid=egid,
+[2020-06-14 08:02:16,921: INFO/MainProcess] Connected to amqp://guest:**@127.0.0.1:5672//
+[2020-06-14 08:02:16,983: INFO/MainProcess] mingle: searching for neighbors
+[2020-06-14 08:02:18,102: INFO/MainProcess] mingle: all alone
+[2020-06-14 08:02:18,177: INFO/MainProcess] celery@goorm ready.
+[2020-06-14 08:02:43,010: INFO/MainProcess] Received task: tasks.echo[be50d68f-f67c-43f1-b342-4f609bcda5a3]  
+[2020-06-14 08:02:43,034: INFO/MainProcess] Received task: tasks.add[5c5db4a5-0b98-4524-bc73-12b89d84bce7]  
+[2020-06-14 08:02:43,041: INFO/ForkPoolWorker-2] Task tasks.add[5c5db4a5-0b98-4524-bc73-12b89d84bce7] succeeded in 0.00051528899894s: 11
+[2020-06-14 08:02:43,042: INFO/ForkPoolWorker-1] Task tasks.echo[be50d68f-f67c-43f1-b342-4f609bcda5a3] succeeded in 0.00465483500011s: 'Hello World!'
+[2020-06-14 08:02:44,123: INFO/MainProcess] Received task: tasks.echo[eaaa37bc-4cc3-4171-abc5-1882244f0331]  
+[2020-06-14 08:02:44,124: INFO/ForkPoolWorker-1] Task tasks.echo[eaaa37bc-4cc3-4171-abc5-1882244f0331] succeeded in 0.000125757000205s: 'Hello World!'
+[2020-06-14 08:02:44,143: INFO/MainProcess] Received task: tasks.add[e695f36e-9f25-4bbe-a8fc-3b092211f293]  
+[2020-06-14 08:02:44,178: INFO/ForkPoolWorker-1] Task tasks.add[e695f36e-9f25-4bbe-a8fc-3b092211f293] succeeded in 0.0001941240007s: 11
+[2020-06-14 08:02:45,187: INFO/MainProcess] Received task: tasks.echo[2c071108-8587-4fc0-8a5c-a426e23d50dc]  
+[2020-06-14 08:02:45,188: INFO/MainProcess] Received task: tasks.add[446cdfc1-b590-41c8-8822-42c542be09d6]  
+[2020-06-14 08:02:45,189: INFO/ForkPoolWorker-2] Task tasks.add[446cdfc1-b590-41c8-8822-42c542be09d6] succeeded in 0.000107055999251s: 11
+[2020-06-14 08:02:45,190: INFO/ForkPoolWorker-1] Task tasks.echo[2c071108-8587-4fc0-8a5c-a426e23d50dc] succeeded in 0.00021763499899s: 'Hello World!'
+[2020-06-14 08:02:46,333: INFO/MainProcess] Received task: tasks.echo[fa0f536d-357b-45be-8691-36b902375df2]  
+[2020-06-14 08:02:46,335: INFO/ForkPoolWorker-1] Task tasks.echo[fa0f536d-357b-45be-8691-36b902375df2] succeeded in 0.00012316900029s: 'Hello World!'
+[2020-06-14 08:02:46,339: INFO/MainProcess] Received task: tasks.add[27d43718-b423-4878-ae2f-5ce5a42ddd84]  
+[2020-06-14 08:02:46,340: INFO/ForkPoolWorker-1] Task tasks.add[27d43718-b423-4878-ae2f-5ce5a42ddd84] succeeded in 9.22729996091e-05s: 11
+[2020-06-14 08:02:47,307: INFO/MainProcess] Received task: tasks.echo[ec09d0a9-5a98-4f47-adf6-1f4f0ac2a59c]  
+[2020-06-14 08:02:47,309: INFO/ForkPoolWorker-1] Task tasks.echo[ec09d0a9-5a98-4f47-adf6-1f4f0ac2a59c] succeeded in 0.000124505999338s: 'Hello World!'
+[2020-06-14 08:02:47,316: INFO/MainProcess] Received task: tasks.add[4057c5d5-8a3c-4df4-960e-ec2da37d81ab]  
+[2020-06-14 08:02:47,335: INFO/ForkPoolWorker-1] Task tasks.add[4057c5d5-8a3c-4df4-960e-ec2da37d81ab] succeeded in 0.000120257000162s: 11
+[2020-06-14 08:02:48,449: INFO/MainProcess] Received task: tasks.echo[45da1766-c6d4-42df-ab27-e9d1169325c1]  
+[2020-06-14 08:02:48,466: INFO/ForkPoolWorker-1] Task tasks.echo[45da1766-c6d4-42df-ab27-e9d1169325c1] succeeded in 0.0160394809991s: 'Hello World!'
+[2020-06-14 08:02:48,483: INFO/MainProcess] Received task: tasks.add[24188240-324f-4e1a-a467-ecf7506a7373]  
+[2020-06-14 08:02:48,484: INFO/ForkPoolWorker-1] Task tasks.add[24188240-324f-4e1a-a467-ecf7506a7373] succeeded in 9.5663999673e-05s: 11
+[2020-06-14 08:02:49,532: INFO/MainProcess] Received task: tasks.echo[1b45bce3-bb1b-4ff2-90a1-24421be71ecf]  
+[2020-06-14 08:02:49,533: INFO/ForkPoolWorker-1] Task tasks.echo[1b45bce3-bb1b-4ff2-90a1-24421be71ecf] succeeded in 0.000123400999655s: 'Hello World!'
+[2020-06-14 08:02:49,561: INFO/MainProcess] Received task: tasks.add[b4930483-fd45-40e2-b233-cadf52b9503a]  
+[2020-06-14 08:02:49,566: INFO/ForkPoolWorker-1] Task tasks.add[b4930483-fd45-40e2-b233-cadf52b9503a] succeeded in 0.000108112999442s: 11
+[2020-06-14 08:02:50,779: INFO/MainProcess] Received task: tasks.echo[df7a4431-316a-4511-9748-fb1ca350d5cc]  
+[2020-06-14 08:02:50,795: INFO/ForkPoolWorker-1] Task tasks.echo[df7a4431-316a-4511-9748-fb1ca350d5cc] succeeded in 0.000123066000015s: 'Hello World!'
+[2020-06-14 08:02:50,823: INFO/MainProcess] Received task: tasks.add[f08f8884-485f-417d-85cc-2f9870ff10ca]  
+[2020-06-14 08:02:50,853: INFO/ForkPoolWorker-1] Task tasks.add[f08f8884-485f-417d-85cc-2f9870ff10ca] succeeded in 0.000119585998618s: 11
+[2020-06-14 08:02:51,921: INFO/MainProcess] Received task: tasks.echo[47f477a7-729e-40a3-9601-4e445eab79a1]  
+[2020-06-14 08:02:51,934: INFO/MainProcess] Received task: tasks.add[72fb2bf5-fbb6-4743-99f2-b4adc24a3579]  
+[2020-06-14 08:02:51,935: INFO/ForkPoolWorker-1] Task tasks.echo[47f477a7-729e-40a3-9601-4e445eab79a1] succeeded in 0.000120640001114s: 'Hello World!'
+[2020-06-14 08:02:51,970: INFO/ForkPoolWorker-2] Task tasks.add[72fb2bf5-fbb6-4743-99f2-b4adc24a3579] succeeded in 0.000124741000036s: 11
+[2020-06-14 08:02:53,139: INFO/MainProcess] Received task: tasks.echo[2d0e3cef-7fdc-4aa1-950a-264638f8e319]  
+[2020-06-14 08:02:53,140: INFO/ForkPoolWorker-1] Task tasks.echo[2d0e3cef-7fdc-4aa1-950a-264638f8e319] succeeded in 0.000117338999189s: 'Hello World!'
+[2020-06-14 08:02:53,142: INFO/MainProcess] Received task: tasks.add[9e5a5640-e428-4346-8a97-786354d3ee81]  
+[2020-06-14 08:02:53,143: INFO/ForkPoolWorker-1] Task tasks.add[9e5a5640-e428-4346-8a97-786354d3ee81] succeeded in 8.87059995875e-05s: 11
+[2020-06-14 08:02:54,300: INFO/MainProcess] Received task: tasks.echo[c1220f14-ccbe-4de3-8cac-fcc464dddc19]  
+[2020-06-14 08:02:54,302: INFO/MainProcess] Received task: tasks.add[853262ab-d6b1-4a80-adc3-6c549bf977e3]  
+[2020-06-14 08:02:54,304: INFO/ForkPoolWorker-1] Task tasks.echo[c1220f14-ccbe-4de3-8cac-fcc464dddc19] succeeded in 0.000126475000798s: 'Hello World!'
+[2020-06-14 08:02:54,324: INFO/ForkPoolWorker-2] Task tasks.add[853262ab-d6b1-4a80-adc3-6c549bf977e3] succeeded in 0.000677145999362s: 11
+[2020-06-14 08:02:55,659: INFO/MainProcess] Received task: tasks.echo[e87b38c0-8fd0-4cb3-b3af-c05b69f76a77]  
+[2020-06-14 08:02:55,660: INFO/MainProcess] Received task: tasks.add[68091411-1deb-401b-bb0c-6c0bf30242e9]  
+[2020-06-14 08:02:55,674: INFO/ForkPoolWorker-1] Task tasks.echo[e87b38c0-8fd0-4cb3-b3af-c05b69f76a77] succeeded in 0.000147710999954s: 'Hello World!'
+[2020-06-14 08:02:55,678: INFO/ForkPoolWorker-2] Task tasks.add[68091411-1deb-401b-bb0c-6c0bf30242e9] succeeded in 0.000107833000584s: 11
+[2020-06-14 08:02:56,805: INFO/MainProcess] Received task: tasks.echo[baf91eab-0e6c-4678-aef1-25d5e2b217a6]  
+[2020-06-14 08:02:56,807: INFO/MainProcess] Received task: tasks.add[c2f5c0f5-e384-42ed-b468-cb49be246cda]  
+[2020-06-14 08:02:56,810: INFO/ForkPoolWorker-2] Task tasks.add[c2f5c0f5-e384-42ed-b468-cb49be246cda] succeeded in 0.000644549001663s: 11
+[2020-06-14 08:02:56,822: INFO/ForkPoolWorker-1] Task tasks.echo[baf91eab-0e6c-4678-aef1-25d5e2b217a6] succeeded in 0.000120515000162s: 'Hello World!'
+[2020-06-14 08:02:58,096: INFO/MainProcess] Received task: tasks.echo[8a00b03e-9a23-4596-93b3-f110eeee2627]  
+[2020-06-14 08:02:58,097: INFO/MainProcess] Received task: tasks.add[638e2202-8627-4b41-a03b-0b467d3fdf28]  
+[2020-06-14 08:02:58,103: INFO/ForkPoolWorker-2] Task tasks.add[638e2202-8627-4b41-a03b-0b467d3fdf28] succeeded in 0.000107907000711s: 11
+[2020-06-14 08:02:58,104: INFO/ForkPoolWorker-1] Task tasks.echo[8a00b03e-9a23-4596-93b3-f110eeee2627] succeeded in 0.000106905001303s: 'Hello World!'
+[2020-06-14 08:02:59,379: INFO/MainProcess] Received task: tasks.echo[bf0ea270-2879-49f9-9547-f3b3aef8297c]  
+[2020-06-14 08:02:59,380: INFO/MainProcess] Received task: tasks.add[89228ae2-e100-4f6f-95d9-9203dd38d0e0]  
+[2020-06-14 08:02:59,381: INFO/ForkPoolWorker-2] Task tasks.add[89228ae2-e100-4f6f-95d9-9203dd38d0e0] succeeded in 0.000111822999315s: 11
+[2020-06-14 08:02:59,387: INFO/ForkPoolWorker-1] Task tasks.echo[bf0ea270-2879-49f9-9547-f3b3aef8297c] succeeded in 0.000121305998618s: 'Hello World!'
+[2020-06-14 08:03:00,381: INFO/MainProcess] Received task: tasks.echo[150ef82f-344c-4eba-94af-393dee45008c]  
+[2020-06-14 08:03:00,410: INFO/ForkPoolWorker-1] Task tasks.echo[150ef82f-344c-4eba-94af-393dee45008c] succeeded in 0.000141513999552s: 'Hello World!'
+[2020-06-14 08:03:00,430: INFO/MainProcess] Received task: tasks.add[8f21f7db-5313-4bf3-9d80-24a626ac7bd5]  
+[2020-06-14 08:03:00,436: INFO/ForkPoolWorker-1] Task tasks.add[8f21f7db-5313-4bf3-9d80-24a626ac7bd5] succeeded in 0.000113606000014s: 11
+[2020-06-14 08:03:01,651: INFO/MainProcess] Received task: tasks.echo[50c3e0a8-103a-4e2a-a4e0-79fbebbe7f4b]  
+[2020-06-14 08:03:01,652: INFO/MainProcess] Received task: tasks.add[fb3fcc8c-c4d5-4af5-ac2c-cac93e6e02a7]  
+[2020-06-14 08:03:01,661: INFO/ForkPoolWorker-1] Task tasks.echo[50c3e0a8-103a-4e2a-a4e0-79fbebbe7f4b] succeeded in 0.00013742199917s: 'Hello World!'
+[2020-06-14 08:03:01,667: INFO/ForkPoolWorker-2] Task tasks.add[fb3fcc8c-c4d5-4af5-ac2c-cac93e6e02a7] succeeded in 0.000117176999993s: 11
+[2020-06-14 08:03:03,402: INFO/MainProcess] Received task: tasks.echo[6cf46e6d-cb69-40e8-8e47-b9d8fdcddb37]  
+[2020-06-14 08:03:03,404: INFO/MainProcess] Received task: tasks.add[6f67c0d2-b178-4a88-bf2f-510a6e9879cf]  
+[2020-06-14 08:03:03,405: INFO/ForkPoolWorker-2] Task tasks.add[6f67c0d2-b178-4a88-bf2f-510a6e9879cf] succeeded in 0.000105918001282s: 11
+[2020-06-14 08:03:03,418: INFO/ForkPoolWorker-1] Task tasks.echo[6cf46e6d-cb69-40e8-8e47-b9d8fdcddb37] succeeded in 0.000135850999868s: 'Hello World!'
+
+worker: Hitting Ctrl+C again will terminate all running tasks!
+
+worker: Warm shutdown (MainProcess)
+ 
+ -------------- celery@goorm v4.4.5 (cliffs)
+--- ***** ----- 
+-- ******* ---- Linux-4.4.0-1109-aws-x86_64-with-Ubuntu-18.04-bionic 2020-06-14 08:02:16
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         tasks:0x7f056b9cf490
+- ** ---------- .> transport:   amqp://guest:**@localhost:5672//
+- ** ---------- .> results:     disabled://
+- *** --- * --- .> concurrency: 2 (prefork)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> celery           exchange=celery(direct) key=celery
+                
+
+[tasks]
+  . tasks.add
+  . tasks.echo
+

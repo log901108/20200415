@@ -11,7 +11,7 @@ var usersRouter = require('./routes/users');
 var authRouter = require('./routes/api/auth');
 var postRouter = require('./routes/api/posts');
 var tableRouter = require('./routes/api/table');
-var cron = require('node-cron');
+var cron = require('./lib/node-cron/src/node-cron.js');
 
 // second minute hour day-of-month month day-of-week
 cron.schedule('* * * * *', function(){
