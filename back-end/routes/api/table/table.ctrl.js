@@ -97,8 +97,20 @@ client.on('connect', function() {
 	});
 });
 
-	
-amqp.connect('amqp://localhost', function(error0, connection) {
+*/
+const object = {
+  protocol: 'amqp',
+  hostname: '34.64.235.208',
+  port: 5672,
+  username: 'admin',
+  password: 'hjy1234##',
+  locale: 'en_US',
+  frameMax: 0,
+  heartbeat: 0,
+  vhost: '/',
+}
+
+amqp.connect(object, function(error0, connection) {
     if (error0) {
         throw error0;
     }
@@ -107,13 +119,13 @@ amqp.connect('amqp://localhost', function(error0, connection) {
             throw error1;
         }
 
-        var queue = 'hello';
+        var queue = 'fq';
         var msg = 'Hello World!';
 
         channel.assertQueue(queue, {
             durable: false
         });
-        //channel.sendToQueue(queue, Buffer.from(msg));
+        channel.sendToQueue(queue, Buffer.from(msg));
 
         //console.log(" [x] Sent %s", msg);
     });
@@ -122,7 +134,7 @@ amqp.connect('amqp://localhost', function(error0, connection) {
         //process.exit(0);
     }, 500);
 });
-*/
+
 	const tablename = req.body.table;
 	const db = {};
 	let sequelize;
@@ -205,5 +217,112 @@ amqp.connect('amqp://localhost', function(error0, connection) {
 			res.status(400).send({err});
 		});	
 }
+	
+};
+
+module.exports.rmqpub = async (req,res,next) => {
+
+const object = {
+  protocol: 'amqp',
+  hostname: '34.64.235.208',
+  port: 5672,
+  username: 'admin',
+  password: 'hjy1234##',
+  locale: 'en_US',
+  frameMax: 0,
+  heartbeat: 0,
+  vhost: '/',
+}
+
+amqp.connect(object, function(error0, connection) {
+  if (error0) {
+    throw error0;
+  }
+  connection.createChannel(function(error1, channel) {
+    if (error1) {
+      throw error1;
+    }
+    var exchange = 'logs';
+	var queue = 'fq'
+    var msg = process.argv.slice(2).join(' ') || 'Hello World!';
+	  
+    channel.assertExchange(exchange, 'direct', {
+      durable: false
+    });
+	  
+	channel.assertQueue(queue, {
+            durable: false
+    },function(error2,q){
+		 if (error2) {
+        throw error2;
+      }
+		channel.bindQueue(q.queue, exchange, queue);
+	});
+	  
+
+    channel.publish(exchange, queue, Buffer.from(msg));
+    console.log(" [x] Sent %s", msg);
+  });
+
+  setTimeout(function() { 
+    connection.close(); 
+    //process.exit(0); 
+  }, 500);
+});
+
+return res.status(200).send({success:true});
+	
+};
+
+module.exports.rmqsub = async (req,res,next) => {
+
+const object = {
+  protocol: 'amqp',
+  hostname: '34.64.235.208',
+  port: 5672,
+  username: 'admin',
+  password: 'hjy1234##',
+  locale: 'en_US',
+  frameMax: 0,
+  heartbeat: 0,
+  vhost: '/',
+}
+
+amqp.connect(object, function(error0, connection) {
+  if (error0) {
+    throw error0;
+  }
+  connection.createChannel(function(error1, channel) {
+    if (error1) {
+      throw error1;
+    }
+    var exchange = 'logs';
+	var queue = 'fq'
+
+    channel.assertExchange(exchange, 'direct', {
+      durable: false
+    });
+
+    channel.assertQueue(queue, {
+      durable: false
+    }, function(error2, q) {
+      if (error2) {
+        throw error2;
+      }
+      console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", q.queue);
+      channel.bindQueue(q.queue, exchange, queue);
+
+      channel.consume(q.queue, function(msg) {
+        if(msg.content) {
+            console.log(" [x] %s", msg.content.toString());
+          }
+      }, {
+        noAck: true
+      });
+    });
+  });
+});
+
+return res.status(200).send({success:true});
 	
 };
