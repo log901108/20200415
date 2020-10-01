@@ -401,7 +401,7 @@ amqp.connect(object, function(error0, connection) {
     var exchange = req.body.exchange || 'exc';
 	var queue = req.body.queue || 'q';
     var msg = req.body.msg || 'Hello World!';
-	var severity = req.body.severity || "info";
+	var key = req.body.severity || "info";
 	var exctype =req.body.type || "direct";
 	  
     channel.assertExchange(exchange, exctype, {
@@ -410,36 +410,31 @@ amqp.connect(object, function(error0, connection) {
 			if(error1){
 				throw error1;
 			}
-		
-		//assertQueue([queue, [options, [function(err, ok) {...}]]])
-		//queue: if user gives null or empty string, random queue name be set
-		
-			channel.assertQueue(severity, {
+			//ch.assertQueue([queue, [options, [function(err, ok) {...}]]])
+			//queue: if user gives null or empty string, random queue name be set
+			channel.assertQueue(queue, {
             		durable: false
     			},function(error2,q){
 					if (error2) {
         				throw error2;
       				}
-				channel.bindQueue(q.queue, exchange, severity);//bindQueue([queue, exchange, queuename])
+				channel.bindQueue(q.queue, exchange, key);//ch.bindQueue(queue, exchange, routing_key, [args_upon_exchange_type])
 			});
 	});
 	  
-    channel.publish(exchange, severity, Buffer.from(msg));//publish([exchangename, queuename, msgbuffer])
-    console.log(" [x] Sent %s : %s", severity, msg);
+    channel.publish(exchange, key, Buffer.from(msg)); //ch.publish(exchangename, routing_key, msg_buffer)
+    console.log(" [x] Sent %s : %s", key, msg);
 	
   });
-
-  setTimeout(function() { 
-    connection.close();
-	console.log('[-]Publisher connection colosed');
-    //process.exit(0); 
-  }, 500);
-});
-
-return res.status(200).send({success:true});
+  	setTimeout(function() { 
+    	connection.close();
+		console.log('[-]Publisher connection colosed');
+    	//process.exit(0); 
+  		}, 500);
+  });
 	
+return res.status(200).send({success:true});
 };
-
 
 module.exports.rmqroutesub = async (req,res,next) => {
 
@@ -465,13 +460,13 @@ amqp.connect(object, function(error0, connection) {
     }
     var exchange = req.body.exchange || 'exc';
 	var queue = req.body.queue || 'queue';
-	var args =  req.body.severity ? req.body.severity : "info";
+	var key =  req.body.severity ? req.body.severity : "info";
 
     channel.assertExchange(exchange, 'direct', {
       durable: false
     });
 
-    channel.assertQueue(args, {
+    channel.assertQueue(queue, {
       durable: false
     }, function(error2, q) {
       if (error2) {
@@ -530,22 +525,22 @@ const channel =  await connection.createChannel();
 	
     var exchange = req.body.exchange || 'exc';
 	var queue = req.body.queue || "q"
-	var args =  req.body.severity ? req.body.severity : "info";
+	var key =  req.body.severity ? req.body.severity : "info";
 
-	var mes = null;
 	await channel.prefetch(2); //un ack된 메세지 한번에 읽어오는 개수... 
 	
-	await channel.bindQueue(queue, exchange, queue);//bindQueue([queue, exchange, queuename])
+	await channel.bindQueue(queue, exchange, key);//bindQueue([queue, exchange, routing_key])
 	
     try{
 		channel.consume(queue, function(msg) {
-        if(msg.content) {
-			mes = msg;
-            console.log(" [x] %s : %s", msg.fields.routingKey, msg.content.toString());
+        	if(msg.content) {
+				console.log(msg);
+            	console.log(" [x] %s: %s : %s", queue, msg.fields.routingKey, msg.content.toString());
 			
-			setTimeout(function() {
-			console.log('waiting ack')
-        	channel.ack(msg);},10000);//ack되면 메세지 큐에서 빠짐... prefetch 개수 만큼 ack를 실행함. 그리고 바로 다음 메세지 읽어옴 
+				setTimeout(function() {
+					console.log('waiting ack')
+        			channel.ack(msg);
+			},10000);//ack되면 메세지 큐에서 빠짐... prefetch 개수 만큼 ack를 실행함. 그리고 바로 다음 메세지 읽어옴 
 			//channel.close();
 		}
       }, {
