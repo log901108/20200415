@@ -12,10 +12,63 @@ var authRouter = require('./routes/api/auth');
 var postRouter = require('./routes/api/posts');
 var tableRouter = require('./routes/api/table');
 var cron = require('./lib/node-cron/src/node-cron.js');
+var amqp = require('amqplib/callback_api');
 
 // second minute hour day-of-month month day-of-week
 cron.schedule('* * * * *', function(){
-  console.log('node-cron 실행 테스트');
+  console.log('node-cron 실행 테스트');	
+const object = {
+  protocol: 'amqp',
+  hostname: '34.64.235.208',
+  port: 5672,
+  username: 'admin',
+  password: 'hjy1234##',
+  locale: 'en_US',
+  frameMax: 0,
+  heartbeat: 0,
+  vhost: '/',
+}
+
+amqp.connect(object, function(error0, connection) {
+  if (error0) {
+    throw error0;
+  }
+  connection.createChannel(function(error1, channel) {
+    if (error1) {
+      throw error1;
+    }
+    var exchange = 'exc';
+	var queue = 'q'
+    var msg = process.argv.slice(2).join(' ') || 'Hello World!';
+	  
+    channel.assertExchange(exchange, 'direct', {
+      durable: false
+    },function(error1){
+		if(error1){
+			throw error1;
+		}
+		//assertQueue([queue, [options, [function(err, ok) {...}]]])
+		//queue: if user gives null or empty string, random queue name be set
+		//
+		channel.assertQueue(queue, {
+            durable: false
+    	},function(error2,q){
+		 	if (error2) {
+        	throw error2;
+      	}
+			channel.bindQueue(q.queue, exchange, queue);
+		});
+	});
+	  
+    channel.publish(exchange, queue, Buffer.from(msg));
+    console.log(" [x] Sent %s", msg);
+  });
+
+  setTimeout(function() { 
+    connection.close(); 
+    //process.exit(0); 
+  }, 500);
+	});
 });
 
 var mjwtdecode = require('./routes/api/auth/middle/mjwtdecode');

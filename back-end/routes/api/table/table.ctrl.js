@@ -6,6 +6,7 @@ const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../../../config/config.json')[env];
 var amqp = require('amqplib/callback_api');
+var amqplib = require('amqplib');
 
 module.exports.create = async (req,res,next) => {
 
@@ -248,24 +249,30 @@ amqp.connect(object, function(error0, connection) {
 	  
     channel.assertExchange(exchange, 'direct', {
       durable: false
-    });
-	  
-	channel.assertQueue(queue, {
+    },function(error1){
+		if(error1){
+			throw error1;
+		}
+		//assertQueue([queue, [options, [function(err, ok) {...}]]])
+		//queue: if user gives null or empty string, random queue name be set
+		//
+		channel.assertQueue(queue, {
             durable: false
-    },function(error2,q){
-		 if (error2) {
-        throw error2;
-      }
-		channel.bindQueue(q.queue, exchange, queue);
+    	},function(error2,q){
+		 	if (error2) {
+        	throw error2;
+      	}
+			channel.bindQueue(q.queue, exchange, queue);
+		});
 	});
 	  
-
     channel.publish(exchange, queue, Buffer.from(msg));
     console.log(" [x] Sent %s", msg);
   });
 
   setTimeout(function() { 
-    connection.close(); 
+    connection.close();
+	console.log('[-]Publisher connection colosed');
     //process.exit(0); 
   }, 500);
 });
@@ -321,7 +328,241 @@ amqp.connect(object, function(error0, connection) {
       });
     });
   });
+	
+  setTimeout(function() { 
+    connection.close();
+	console.log('[-]Subscriber connection colosed');
+    //process.exit(0); 
+  }, 500);
 });
+
+return res.status(200).send({success:true});
+	
+};
+
+module.exports.deletequeue = async (req,res,next) => {
+
+const object = {
+  protocol: 'amqp',
+  hostname: '34.64.235.208',
+  port: 5672,
+  username: 'admin',
+  password: 'hjy1234##',
+  locale: 'en_US',
+  frameMax: 0,
+  heartbeat: 0,
+  vhost: '/',
+}
+
+amqp.connect(object, function(error0, connection) {
+  if (error0) {
+    throw error0;
+  }
+  connection.createChannel(function(error1, channel) {
+    if (error1) {
+      throw error1;
+    }
+	var queue = req.body.queue;
+    channel.deleteQueue(queue);
+  });
+	
+  setTimeout(function() { 
+    connection.close();
+	console.log('[-]connection colosed');
+    //process.exit(0); 
+  }, 500);
+});
+
+return res.status(200).send({success:true});
+};
+
+module.exports.rmqroutepub = async (req,res,next) => {
+
+const object = {
+  protocol: 'amqp',
+  hostname: '34.64.235.208',
+  port: 5672,
+  username: 'admin',
+  password: 'hjy1234##',
+  locale: 'en_US',
+  frameMax: 0,
+  heartbeat: 0,
+  vhost: '/',
+}
+
+amqp.connect(object, function(error0, connection) {
+  if (error0) {
+    throw error0;
+  }
+  connection.createChannel(function(error1, channel) {
+    if (error1) {
+      throw error1;
+    }
+    var exchange = req.body.exchange || 'exc';
+	var queue = req.body.queue || 'q';
+    var msg = req.body.msg || 'Hello World!';
+	var severity = req.body.severity || "info";
+	var exctype =req.body.type || "direct";
+	  
+    channel.assertExchange(exchange, exctype, {
+      		durable: false
+    	}, function(error1){
+			if(error1){
+				throw error1;
+			}
+		
+		//assertQueue([queue, [options, [function(err, ok) {...}]]])
+		//queue: if user gives null or empty string, random queue name be set
+		
+			channel.assertQueue(severity, {
+            		durable: false
+    			},function(error2,q){
+					if (error2) {
+        				throw error2;
+      				}
+				channel.bindQueue(q.queue, exchange, severity);//bindQueue([queue, exchange, queuename])
+			});
+	});
+	  
+    channel.publish(exchange, severity, Buffer.from(msg));//publish([exchangename, queuename, msgbuffer])
+    console.log(" [x] Sent %s : %s", severity, msg);
+	
+  });
+
+  setTimeout(function() { 
+    connection.close();
+	console.log('[-]Publisher connection colosed');
+    //process.exit(0); 
+  }, 500);
+});
+
+return res.status(200).send({success:true});
+	
+};
+
+
+module.exports.rmqroutesub = async (req,res,next) => {
+
+const object = {
+  protocol: 'amqp',
+  hostname: '34.64.235.208',
+  port: 5672,
+  username: 'admin',
+  password: 'hjy1234##',
+  locale: 'en_US',
+  frameMax: 0,
+  heartbeat: 0,
+  vhost: '/',
+}
+
+amqp.connect(object, function(error0, connection) {
+  if (error0) {
+    throw error0;
+  }
+  connection.createChannel(function(error1, channel) {
+    if (error1) {
+      throw error1;
+    }
+    var exchange = req.body.exchange || 'exc';
+	var queue = req.body.queue || 'queue';
+	var args =  req.body.severity ? req.body.severity : "info";
+
+    channel.assertExchange(exchange, 'direct', {
+      durable: false
+    });
+
+    channel.assertQueue(args, {
+      durable: false
+    }, function(error2, q) {
+      if (error2) {
+        throw error2;
+      }
+      console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", q.queue);
+	
+	  //channel.bindQueue(q.queue, exchange, args);
+	
+      channel.consume(q.queue, function(msg) {
+        if(msg.content) {
+			
+			var secs = msg.content.toString().split('.').length - 1;
+            console.log(" [x] %s : %s", msg.fields.routingKey, msg.content.toString());
+			
+			setTimeout(function() {
+        	console.log(" [x] Done");
+        	channel.ack(msg);
+      		}, secs * 1000);
+			
+          }
+      }, {
+        noAck: true
+      });
+    });
+  });
+	/*
+  setTimeout(function() { 
+    connection.close();
+	console.log('[-]Subscriber connection colosed');
+    //process.exit(0); 
+  }, 1500);*/
+});
+
+return res.status(200).send({success:true});
+	
+};
+
+module.exports.rmqrouteconsume = async (req,res,next) => {
+
+const object = {
+  protocol: 'amqp',
+  hostname: '34.64.235.208',
+  port: 5672,
+  username: 'admin',
+  password: 'hjy1234##',
+  locale: 'en_US',
+  frameMax: 0,
+  heartbeat: 0,
+  vhost: '/',
+}
+
+const connection = await amqplib.connect(object);
+	
+const channel =  await connection.createChannel();
+	
+    var exchange = req.body.exchange || 'exc';
+	var queue = req.body.queue || "q"
+	var args =  req.body.severity ? req.body.severity : "info";
+
+	var mes = null;
+	await channel.prefetch(2); //un ack된 메세지 한번에 읽어오는 개수... 
+	
+	await channel.bindQueue(queue, exchange, queue);//bindQueue([queue, exchange, queuename])
+	
+    try{
+		channel.consume(queue, function(msg) {
+        if(msg.content) {
+			mes = msg;
+            console.log(" [x] %s : %s", msg.fields.routingKey, msg.content.toString());
+			
+			setTimeout(function() {
+			console.log('waiting ack')
+        	channel.ack(msg);},10000);//ack되면 메세지 큐에서 빠짐... prefetch 개수 만큼 ack를 실행함. 그리고 바로 다음 메세지 읽어옴 
+			//channel.close();
+		}
+      }, {
+        noAck: false
+	});
+	   } catch(err){
+		   console.log(err);
+	   }
+
+/*
+  setTimeout(function() { 
+	//channel.ack(mes);
+    connection.close();
+	console.log('[-]consumer connection colosed');
+    //process.exit(0); 
+  }, 1500);
+*/
 
 return res.status(200).send({success:true});
 	
