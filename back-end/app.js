@@ -6,13 +6,16 @@ var bodyParser = require('body-parser');
 var logger = require('morgan');
 var cors = require('cors');
 require('dotenv').config();
+var cron = require('./lib/node-cron/src/node-cron.js');
+var amqp = require('amqplib/callback_api');
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var authRouter = require('./routes/api/auth');
 var postRouter = require('./routes/api/posts');
 var tableRouter = require('./routes/api/table');
-var cron = require('./lib/node-cron/src/node-cron.js');
-var amqp = require('amqplib/callback_api');
+var rmqRouter = require('./routes/api/rmq');
+
 
 // second minute hour day-of-month month day-of-week
 cron.schedule('* * * * *', function(){
@@ -95,6 +98,7 @@ app.use('/users', usersRouter);
 app.use('/api/auth',authRouter);
 app.use('/api/posts', postRouter);
 app.use('/api/table', tableRouter);
+app.use('/api/rmq',rmqRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
