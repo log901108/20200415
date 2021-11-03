@@ -39,6 +39,6 @@
     "sanitize-html": "^1.23.0",
     "sequelize": "^5.21.6",
     "validate": "^5.1.0",
-    "validator": "^13.0.0"
+    "validator": "^13.7.0"
   }
 }
